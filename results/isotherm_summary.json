@@ -1,0 +1,70 @@
+{
+  "observations": 540,
+  "formulations": 36,
+  "points_per_formulation": [
+    15
+  ],
+  "negative_sorption": 171,
+  "activation_groups": [
+    {
+      "mg_molar": 0,
+      "observations": 135,
+      "negative_sorption": 93,
+      "q_min": -11.62745098039216,
+      "q_max": 2.6186915887850475
+    },
+    {
+      "mg_molar": 0.25,
+      "observations": 135,
+      "negative_sorption": 52,
+      "q_min": -6.982857142857143,
+      "q_max": 6.209803921568628
+    },
+    {
+      "mg_molar": 0.5,
+      "observations": 135,
+      "negative_sorption": 26,
+      "q_min": -3.1529411764705912,
+      "q_max": 21.18738738738739
+    },
+    {
+      "mg_molar": 1.0,
+      "observations": 135,
+      "negative_sorption": 0,
+      "q_min": 1.4655999999999996,
+      "q_max": 13.467326732673264
+    }
+  ],
+  "solution_p_range_mg_l": [
+    0.0,
+    181.77
+  ],
+  "workbook_sheets": [
+    "General Information",
+    "Figure 1 and Sup. Fig. S2",
+    "Figure 2 and Sup. Fig. S3",
+    "Figure 3",
+    "Figure 4",
+    "Figure 5 and Sup. Fig. S5",
+    "Proximate Analysis",
+    "Surface Area",
+    "Sup. Fig. S1",
+    "Sup. Fig. S4"
+  ],
+  "label_anomalies": {
+    "Figure 1 and Sup. Fig. S2": [
+      "PL9"
+    ],
+    "Proximate Analysis": [
+      "PL9"
+    ]
+  },
+  "notes": [
+    "Observation counts pool concentration conditions and within-condition measurements; they are not independent batches or field events.",
+    "Point index records sheet order only; no replicate identity or initial concentration is inferred from position.",
+    "Negative sorbed-P values are preserved as net release, not set to zero.",
+    "Only the isotherm sheet is normalized for this analysis. Other sheets are archived and inventoried; PL9 labels there are not silently mapped to PL7.",
+    "Workbook General Information names Figure 4 and Sup. Fig. S5, but the actual isotherm tab is Figure 5 and Sup. Fig. S5.",
+    "This descriptive extraction does not refit Langmuir parameters or reproduce published SE and R-squared."
+  ]
+}

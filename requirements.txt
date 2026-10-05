@@ -1,0 +1,3 @@
+# The analysis and tests use only Python's standard library.
+# Optional PDF inspection only; figures are drawn by LaTeX/PGFPlots.
+pypdf>=5,<7

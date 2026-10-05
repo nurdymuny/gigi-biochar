@@ -1,0 +1,915 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=0.85in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,booktabs,longtable,array}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows.meta,patterns,positioning}
+\usepgfplotslibrary{groupplots}
+\pgfplotsset{compat=1.18}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.45em}
+\setlength{\emergencystretch}{2em}
+\renewcommand{\arraystretch}{1.16}
+\title{Fit Quality Screening of Biochar\texorpdfstring{\\}{ }for Phosphorus Capture}
+\author{}
+\date{Research note for scientific discussion\\5 October 2026}
+\begin{document}
+\maketitle
+\vspace{-1.8em}
+\begin{center}\small A reproducible secondary analysis using GIGI\end{center}
+
+\begin{abstract}
+Selecting biochars for phosphorus capture requires distinguishing a large fitted capacity from a well-supported estimate and from measured performance in runoff. This note reanalyzes 36 published formulation-level Langmuir summaries from a poultry-litter biochar experiment. Capacity estimates, reported standard errors, fit quality and net-release labels were retained in a queryable GIGI dataset. Applying the descriptive screen $R^2>0.80$ retained 16 formulations, excluded eight numeric fits and preserved 12 net-release entries without assigning them zero capacity. All nine formulations prepared using 1~M magnesium activation passed this screen; none of the nine untreated formulations did. The largest retained point estimate was $10.35\pm1.45$~mg~P/g biochar, whereas the largest unscreened estimate was $134.41\pm133.98$~mg~P/g with $R^2=0.00$. Here, $\pm$ denotes the source-reported standard error. Tightening the screen to $R^2>0.90$ changed the highest-ranked formulation. The resulting shortlist is therefore conditional on model screening and does not identify a statistically established optimum. The contribution is a transparent and verified data workflow, not new sorption experiments or proof of reduced field runoff. A proposed follow-up protocol links material screening to P mass balances, breakthrough and release testing.
+The archived workbook additionally contributes 540 measured isotherm pairs, including 171 negative sorption values; all were preserved and independently checked after import. These observations support descriptive release screening but do not constitute independent field trials.
+\end{abstract}
+
+\section{Research question and scope}
+The practical question is which biochar formulations warrant additional testing for phosphorus capture. An appropriate workflow must retain evidence of weak fits and phosphorus release, rather than report only a ranked list of capacities. It must also preserve the distinction between a model parameter and a directly measured environmental outcome.
+
+The sources are Table~1 of Padilla et al.~\cite{padilla} and the accompanying Dryad isotherm worksheet~\cite{dryad}, covering three poultry-litter feedstock age categories, four magnesium activation concentrations and three pyrolysis temperatures. Each of the 36 rows in the expanded table represents a formulation-level summary, not an independent experimental replicate. A separate dataset preserves 540 measured concentration--sorption pairs. The present note analyzes both layers descriptively. It does not reproduce the authors' inferential analysis or claim new evidence for a sorption mechanism.
+
+Three questions are addressed: which reported capacity estimates survive a declared fit-quality screen; how sensitive the shortlist is to that screen; and how GIGI can preserve and query the evidence needed for a subsequent laboratory program. Crop-uptake outcomes from the earlier exploratory work are outside this note because they do not measure P removal from water.
+
+\section{What a fiber bundle database means}
+\subsection{A sample tray with a measurement card at every position}
+Imagine a laboratory sample tray. Each occupied position has a permanent label, such as formulation~24. Above that position is a measurement card with spaces for the recipe, capacity estimate, standard error, fit quality and source reference. The tray's labeled positions answer \emph{which formulation?}; the card answers \emph{what is recorded about it?}
+
+In the fiber-bundle analogy, the labeled positions form the \textbf{base space}. The collection of possible measurements and attributes attached to one position is its \textbf{fiber}. The collection of positions together with their attached fibers is the \textbf{bundle}. A stored record supplies the actual values on a card. Using the same card layout across the tray makes it possible to retrieve, filter and compare records consistently.
+
+The distinction between possible and observed values matters. A blank capacity box still exists on an NR record's card; it has not become a measurement of zero. Similarly, a formulation's unique label identifies its record but does not tell us how chemically similar it is to another formulation. Formulation~24 is not physically ``closer'' to formulation~25 merely because their identifiers are consecutive.
+
+\begin{center}
+\begin{tabular}{@{}p{0.25\textwidth}p{0.65\textwidth}@{}}
+\toprule
+Analogy & This dataset\\\midrule
+Labeled tray position & Base key: formulation ID 24\\
+Measurement card & Fiber fields: PL3, 1~M Mg, 900~$^\circ$C, capacity, SE, $R^2$, provenance\\
+Completed card & Observed values: $10.35$, $1.45$ and $0.90$, with units and field meanings\\
+Whole tray & The named bundle containing all 36 formulation records\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Where geometry enters and what the analogy leaves out}
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex,font=\small]
+\draw[very thick,blue!55!black] (0,0) -- (14.4,0);
+\node[anchor=north] at (7.2,-0.25) {Base: formulation identifiers (spacing has no chemical meaning)};
+\foreach \x/\id in {2.3/1,7.2/24,12.1/36}{
+ \draw[densely dashed,gray,thick] (\x,0) -- (\x,1.1);
+ \fill[blue!55!black] (\x,0) circle (2pt);
+ \node[fill=white,inner sep=2pt] at (\x,0.35) {ID \id};
+ \draw[rounded corners=2pt,fill=blue!3,draw=blue!45!black] (\x-2.05,1.1) rectangle (\x+2.05,3.7);
+}
+\node[align=left,text width=3.8cm] at (2.3,2.4) {\textbf{A release-labeled record}\\PL1 / 0 M / 500 $^\circ$C\\Capacity: unavailable\\SE and $R^2$: unavailable\\Source label: NR};
+\node[align=left,text width=3.8cm] at (7.2,2.4) {\textbf{A completed card}\\PL3 / 1 M / 900 $^\circ$C\\$P_{\max}=10.35$ mg P/g\\SE $=1.45$ mg P/g\\$R^2=0.90$};
+\node[align=left,text width=3.8cm] at (12.1,2.4) {\textbf{Same field layout}\\PL7 / 1 M / 900 $^\circ$C\\Recipe and measurements\\Fit quality and units\\Source-cell provenance};
+\node[anchor=south] at (7.2,4.0) {Fibers: spaces for attributes and measurements attached to each identifier};
+\draw[->,thick] (7.2,-0.95) -- (7.2,-1.45);
+\node[draw,rounded corners,align=center,fill=gray!5,text width=12.8cm] at (7.2,-2.0)
+ {Query the complete cards: keep $R^2>0.80$, then sort by capacity.\\Missing values remain missing; source evidence stays attached.};
+\end{tikzpicture}
+\caption{Conceptual drawing of the fiber-bundle organization used here. Three records illustrate the base--fiber distinction; the full bundle contains 36. The connecting lines show attachment, not causal relationships or a measured geometric distance.}
+\label{fig:bundle}
+\end{figure}
+
+A fiber bundle is a mathematical way to organize local spaces over a base. In geometry, a section selects a value in the fiber over each base point. For this finite database, the stored records can be understood as a discrete assignment of values to indexed positions. This explanation provides intuition; the sample tray is not a claim that the experimental design has been shown to form a smooth physical manifold.
+
+GIGI uses this organization as a basis for database operations and geometric analyses~\cite{gigi}. For example, a collection of numeric measurement cards can be studied for neighborhood structure or unusual records when the selected representation and distance rule are appropriate. Those comparisons require scientific choices: units, scaling, categorical encoding, missingness and which fields should enter a distance. A difference of one in temperature, capacity and $R^2$ does not carry the same meaning. The database cannot make that experimental judgment merely from a field name.
+
+In this note, the base key is the unique formulation identifier; recipe, measurement and provenance fields live with that key. We use GIGI to preserve complete cards and to ask an explicit question: retain records whose reported $R^2$ exceeds the chosen threshold, then rank their capacities. Conventional databases or analysis scripts can perform the same screening. No advantage of geometric learning is inferred here, and GIGI's geometric metadata are not substitutes for the experiment's SE, model diagnostic or runoff validation.
+
+\section{Data and analytical methods}
+\subsection{Source and measurement context}
+Published capacity estimates, standard errors (SE), $R^2$ values and NR labels were extracted with source-cell identifiers. The table defines NR as net P release. These entries were stored as null capacity, SE and $R^2$, not as zero. Feedstock codes PL1, PL3 and PL7 identify litter aged 1, 3--5 and 7--9 years, respectively. Magnesium activation concentration refers to the preparation solution, not the final Mg content of the biochar.
+
+The source batch tests used 0.1~g biochar in 20~mL solution, initial P of 25--150~mg/L, 10~mM KCl, initial pH around 5 and 24~h equilibration at 21~$^\circ$C; experiments were conducted in triplicate~\cite{padilla}. These conditions constrain transfer to runoff water. After an initial direct-download failure, the public Dryad workbook~\cite{dryad} was supplied as the 10 October 2023 archive. Its unchanged bytes and README are preserved with SHA-256 digests. The worksheet \texttt{Figure 5 and Sup. Fig. S5} supplies 540 paired solution-concentration and sorbed-P values: 15 points for each of the 36 formulations. These measured pairs are analyzed descriptively in addition to the published fit summaries; they are not used here to refit the Langmuir parameters.
+
+Each pair retains its sheet name and Excel cell coordinates. Point indices preserve sheet order; no experimental-unit identity, initial concentration, or replicate assignment is inferred solely from position. Negative sorbed-P values are retained as net release. The 540 rows pool multiple concentration conditions and within-condition measurements and must not be treated as 540 independent manufacturing batches. The workbook's notes refer to a nonexistent \texttt{Figure 4 and Sup. Fig. S5} tab; the actual isotherm tab was identified by its headers. Two other sheets use PL9 labels where the paper's age category is PL7. Those sheets are archived but not merged into the isotherm analysis or silently relabeled.
+
+\subsection{Descriptive screening and ranking}
+For a formulation $i$, inclusion in the primary numerical shortlist was defined as
+\begin{equation}
+I_i=\mathbf{1}\{P_{\max,i}\text{ is reported and }R_i^2>0.80\}.
+\label{eq:screen}
+\end{equation}
+This follows the threshold in the source figure description. The article also describes excluding $R^2<0.80$ elsewhere. No displayed value equals 0.80, so that wording difference does not change the primary result. All thresholds in this analysis are explicitly strict and operate on the published values rounded to two decimal places.
+
+Retained records were ordered by decreasing $P_{\max}$. Group counts use all nine formulations at each Mg concentration as their denominator. Capacity ranges describe only the retained subset. No imputation, inverse-variance pooling, new hypothesis test, confidence interval, or causal comparison between Mg levels was performed. The source-reported SE was carried with each estimate rather than converted into a nominal 95\% interval without the necessary fit details.
+
+Sensitivity analyses repeated the rule with $R^2>0.70$, $>0.85$, $>0.90$ and $>0.95$. These are alternative descriptive screens, not independently calibrated standards for sorbent suitability. A good $R^2$ does not establish correct model specification, an unbiased parameter estimate, independent predictive accuracy, or field performance.
+
+\subsection{Implementation and verification}
+Python's standard library extracted the attributed HTML table excerpt into JSON and CSV and computed an independent reference result. GIGI stored the formulation records and executed filtering, ranking and grouped aggregation. A complete roundtrip checked identifiers, text and nulls exactly and numeric fields within $10^{-12}$ relative or absolute tolerance. Returned rankings at all five thresholds and the grouped counts and means were compared with the independent reference.
+
+A synthetic check planted a capacity of 9999 with $R^2=0.01$ and a capacity of 5 with $R^2=0.95$. The screened query had to select the latter. Removing the fit condition had to select the former, demonstrating that the verification distinguishes the screening mechanism from capacity-only ranking. Synthetic records occupy a separate bundle. The repository includes deterministic offline tests and exact live HTTP receipts.
+
+GIGI's geometric confidence metadata were not used as statistical uncertainty. No spectral clustering, manifold prediction or performance comparison against conventional statistical software was undertaken. The demonstrated contribution is reproducible evidence handling with the measurements and their qualifications co-located.
+
+\section{Results}
+\subsection{Primary screen}
+Of the 36 formulations, 24 had numeric capacity estimates and 12 carried NR labels. Sixteen numeric estimates satisfied Equation~\ref{eq:screen}; eight did not. Table~\ref{tab:activation} shows that the 1~M group contains nine retained estimates, while the untreated group contains seven NR entries and two excluded numeric fits. This does not mean that all untreated materials have exactly zero uptake under every condition. The table does not quantify their release, and an excluded model may summarize a condition-dependent response poorly.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Primary screening outcomes by activation concentration. Ranges summarize retained estimates only and are not uncertainty intervals. Each formulation is counted once.}
+\label{tab:activation}
+\begin{tabular}{@{}rrrrrl@{}}
+\toprule
+Mg (M) & Total & Retained & Excluded & NR & Range (mg P/g)\\
+\midrule
+0 & 9 & 0 & 2 & 7 & -- \\
+0.25 & 9 & 3 & 3 & 3 & 0.62--4.10 \\
+0.5 & 9 & 4 & 3 & 2 & 1.67--5.33 \\
+1 & 9 & 9 & 0 & 0 & 2.60--10.35 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The highest retained point estimate was PL3 at 1~M Mg and 900~$^\circ$C: $10.35\pm1.45$~mg~P/g, with $R^2=0.90$. In comparison, PL1 at 1~M and 500~$^\circ$C was $8.55\pm0.97$~mg~P/g, with $R^2=0.94$. Figure~\ref{fig:capacity} displays all retained estimates with their reported SE. Neither the ordering of point estimates nor visual overlap of SE bars is a formal pairwise test. Unknown dependence between fitted estimates prevents treating these bars as independent experimental-batch uncertainty.
+
+The unscreened maximum, PL7 at 0.5~M and 500~$^\circ$C, was $134.41\pm133.98$~mg~P/g with $R^2=0.00$. Its SE is approximately as large as the estimate itself. The screening workflow excludes this value from the numerical shortlist but keeps it in the source inventory. This illustrates a failure of capacity-only ranking without implying that a fit threshold alone validates the remaining models.
+
+\begin{figure}[p]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+ width=0.89\textwidth,height=0.62\textheight,
+ xmin=0,xmax=13,ymin=0.4,ymax=16.6,
+ xlabel={Published $P_{\max}$ (mg P/g biochar)},
+ ytick={1,...,16},yticklabels={{PL7 / 0.25 / 900},{PL1 / 0.25 / 900},{PL1 / 0.5 / 900},{PL1 / 0.5 / 700},{PL1 / 1 / 900},{PL7 / 1 / 700},{PL1 / 0.25 / 700},{PL7 / 0.5 / 900},{PL7 / 1 / 500},{PL3 / 0.5 / 900},{PL7 / 1 / 900},{PL3 / 1 / 500},{PL1 / 1 / 700},{PL3 / 1 / 700},{PL1 / 1 / 500},{PL3 / 1 / 900}},
+ yticklabel style={font=\small},xticklabel style={font=\small},
+ grid=major,grid style={gray!18},axis line style={gray!60},
+ tick style={gray!60},
+ title={Feedstock / Mg activation (M) / pyrolysis temperature ($^\circ$C)},
+ title style={font=\small},
+]
+\addplot+[only marks,mark=*,mark size=2.4pt,color=blue!55!black,
+ error bars/.cd,x dir=both,x explicit]
+ table[x index=0,y index=1,x error index=2,header=false]{
+10.35 16 1.45
+8.55 15 0.97
+7.43 14 0.83
+7.41 13 0.23
+6.32 12 0.32
+5.41 11 1.85
+5.33 10 0.6
+4.9 9 0.61
+4.25 8 0.21
+4.1 7 0.17
+2.84 6 0.4
+2.6 5 0.25
+2.39 4 0.29
+1.67 3 0.22
+0.66 2 0.12
+0.62 1 0.06
+};
+\end{axis}
+\end{tikzpicture}
+\caption{All 16 estimates retained at $R^2>0.80$, ranked by point estimate. Horizontal bars are the \emph{published standard errors}, not 95\% confidence intervals and not field-performance ranges. Values are replotted from Table~1 of Padilla et al.~\cite{padilla}. The leading estimate is not a statistically established winner.}
+\label{fig:capacity}
+\end{figure}
+
+\subsection{Threshold sensitivity}
+Tightening the strict threshold changes both the set of retained formulations and the largest retained point estimate (Table~\ref{tab:sensitivity}). At $R^2>0.90$, the PL3/1~M/900~$^\circ$C formulation is excluded because its displayed $R^2$ equals 0.90. PL1/1~M/500~$^\circ$C becomes the highest-ranked retained formulation. At $R^2>0.95$, PL1/1~M/700~$^\circ$C leads. These changes show that a unique recipe recommendation would depend on an analyst-selected cutoff and on the precision of the published fit diagnostic.
+
+The concentration-level result is more stable across the first three thresholds: all nine 1~M formulations remain eligible at 0.70, 0.80 and 0.85. Seven remain at 0.90 and four at 0.95. This supports prioritizing multiple 1~M formulations for further comparison within this dataset, while retaining lower-activation candidates when testing chemical-use and performance tradeoffs. Costs and manufacturing energy were not measured here.
+
+\begin{table}[htbp]
+\centering\small
+\caption{Sensitivity to a strict $R^2$ cutoff. Every leading recipe uses 1~M Mg. Capacities are point estimates $\pm$ published SE. Equality with the cutoff is excluded.}
+\label{tab:sensitivity}
+\begin{tabular}{@{}rrrll@{}}
+\toprule
+Cutoff & Retained & At 1 M & Leading feedstock, $^\circ$C & Capacity (mg P/g)\\
+\midrule
+0.70 & 17 & 9 & PL3, 900 & 10.35 $\pm$ 1.45 \\
+0.80 & 16 & 9 & PL3, 900 & 10.35 $\pm$ 1.45 \\
+0.85 & 14 & 9 & PL3, 900 & 10.35 $\pm$ 1.45 \\
+0.90 & 12 & 7 & PL1, 500 & 8.55 $\pm$ 0.97 \\
+0.95 & 5 & 4 & PL1, 700 & 7.41 $\pm$ 0.23 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Additional evidence from the archived isotherm measurements}
+The supplied workbook contains 540 paired observations across the same 36 formulations. Of these, 171 have negative sorbed-P values. Grouped descriptively by activation concentration, the counts are 93/135 at 0~M, 52/135 at 0.25~M, 26/135 at 0.5~M and 0/135 at 1~M. Every recorded 1~M point in this sheet is positive, ranging from 1.47 to 13.47~mg~P/g. These denominators count observations over different concentrations and materials, not independent studies. They do not estimate the probability of success in runoff or establish a causal dose response.
+
+Figure~\ref{fig:raw} preserves the signed measurements and their solution-concentration coordinates. A formulation can show uptake at some conditions and release at others, so the sign of an individual observation and a formulation-level NR label answer different questions. The numerical values were loaded into a separate GIGI bundle, fully checked against the source-derived reference, and queried for negative sorption; all 171 returned records matched. No summary fit was replaced by an ad hoc fit to these points.
+
+\begin{figure}[p]
+\centering
+\begin{tikzpicture}
+\begin{groupplot}[group style={group size=2 by 2,horizontal sep=1.7cm,vertical sep=2.1cm},
+ width=0.40\textwidth,height=0.30\textheight,
+ xmin=0,xmax=190,ymin=-13,ymax=23,
+ xlabel={Solution P (mg/L)},ylabel={Sorbed P (mg/g)},
+ ticklabel style={font=\small},label style={font=\small},title style={font=\small},
+ grid=major,grid style={gray!15},]
+\nextgroupplot[title={0 M Mg}]
+\addplot[gray,dashed] coordinates {(0,0) (190,0)};
+\addplot[only marks,mark=*,mark size=1.25pt,blue!55!black] table[header=false] {
+35.54 -2.07222222222
+36.67 -2.41568627451
+35.53 -2.03272727273
+74.94 -5.404
+75.74 -5.35
+75.65 -5.38446601942
+107.37 -5.9252173913
+109.98 -6.98666666667
+109.48 -6.40353982301
+142.46 -8.88514851485
+142.63 -8.57904761905
+135.88 -7.02568807339
+167.28 -8.70097087379
+164.84 -7.56607142857
+167.93 -8.74230769231
+20.39 0.859813084112
+18.72 1.08103448276
+16.97 1.30406504065
+43.45 1.1298245614
+44.46 1.06470588235
+44.4 0.92268907563
+76.84 -0.0679611650485
+71.2 1.03725490196
+71.11 0.91186440678
+98.68 1.076
+99 0.954716981132
+95.32 1.66476190476
+129.07 -0.302
+134.15 -1.30495049505
+133.96 -1.2427184466
+16.66 1.35447154472
+16.76 1.6297029703
+17.82 1.37884615385
+49.05 0.155555555556
+46.03 0.756862745098
+40.95 1.68679245283
+69.74 1.35
+68.12 1.56448598131
+66.07 1.72231404959
+99.87 0.805769230769
+91.41 2.45631067961
+95.83 1.6297029703
+122.27 1.02718446602
+118.82 1.61851851852
+129.09 -0.306
+46.43 -4.08888888889
+47.14 -4.38269230769
+47.42 -4.47961165049
+91.96 -8.23177570093
+87.5 -7.76078431373
+93.02 -8.35185185185
+120.37 -9.414
+126.33 -10.500990099
+122.78 -9.16296296296
+160.1 -10.7775862069
+148.85 -10.252
+154.75 -11.432
+181.33 -11.3192307692
+181.77 -11.6274509804
+181.61 -11.4834951456
+22.74 0.445544554455
+25.1 -0.0194690265487
+21.97 0.525217391304
+54.6 -0.7536
+58.46 -1.31846153846
+51.09 -0.224299065421
+87.34 -1.9203539823
+91.18 -2.77169811321
+83.5 -1.31028037383
+111.39 -1.43725490196
+127.12 -4.15495495495
+122.11 -3.08547008547
+158.57 -5.96346153846
+151.53 -3.86612903226
+150.61 -4.04385964912
+29.92 -0.930188679245
+28.27 -0.61308411215
+25.47 -0.0950495049505
+54.33 -0.785840707965
+55.74 -1.10377358491
+46.94 0.578431372549
+80.68 -0.81359223301
+86.92 -2.06534653465
+95.3 -3.58285714286
+109.36 -0.929824561404
+117.2 -2.43333333333
+130.43 -5.17058823529
+159.54 -5.76216216216
+157.62 -5.78076923077
+154.35 -4.82702702703
+40.86 -2.79830508475
+40.77 -3.12761904762
+42.44 -3.618
+81.16 -5.78086956522
+80.87 -5.93693693694
+82.51 -6.40555555556
+119.33 -8.14690265487
+118.93 -8.86019417476
+118.92 -8.07433628319
+149.49 -9.52293577982
+151.39 -8.89256198347
+154.56 -9.73846153846
+179.79 -11.464
+174.65 -8.62479338843
+179.23 -9.62033898305
+21.72 0.622857142857
+23.36 0.310476190476
+17.35 1.41481481481
+50.12 -0.0433962264151
+48.85 0.2
+49.42 0.094
+79.65 -0.585185185185
+78.26 -0.340384615385
+72.1 0.74406779661
+107.46 -0.59649122807
+116.44 -2.29259259259
+114.19 -2.00594059406
+140.55 -2.42803738318
+138.68 -1.8081300813
+137.77 -1.98252427184
+10.34 2.61869158879
+17.22 1.34528301887
+10.86 2.59423076923
+43.33 0.908910891089
+40.56 1.3504587156
+40.95 1.31509433962
+63.86 1.67079646018
+67.11 1.20194174757
+78.26 -0.935849056604
+101.07 -0.61592920354
+104.79 -1.32110091743
+103.95 -1.18878504673
+132.26 -1.73274336283
+126.1 -0.672222222222
+126.37 -0.742857142857
+};
+\nextgroupplot[title={0.25 M Mg}]
+\addplot[gray,dashed] coordinates {(0,0) (190,0)};
+\addplot[only marks,mark=*,mark size=1.25pt,blue!55!black] table[header=false] {
+31.75 -1.25192307692
+27.2 -0.340869565217
+30.55 -1.05148514851
+62.02 -2.16380952381
+64.77 -2.71346153846
+63.69 -2.41296296296
+100.94 -4.44112149533
+93.33 -2.80869565217
+98.29 -4.02095238095
+133.56 -6.398
+138.23 -6.98285714286
+132.91 -5.91320754717
+154.14 -4.76893203883
+154.1 -4.2275862069
+156.31 -5.24117647059
+2.29 4.47358490566
+2.84 4.36981132075
+4.77 3.75752212389
+20.01 6.20980392157
+29.27 4.30961538462
+36.75 2.64247787611
+66.62 1.86336633663
+61.07 2.96237623762
+53.84 3.69833333333
+85.57 3.426
+87.53 2.78348623853
+90.58 2.26542056075
+114.18 2.72072072072
+122.7 1.16460176991
+121.35 1.5702970297
+20.32 1.0819047619
+17.97 1.5900990099
+19.27 1.31960784314
+43.11 1.58703703704
+45.47 1.18285714286
+45.4 1.23137254902
+66.64 1.60512820513
+66.81 1.58965517241
+70.48 0.965217391304
+95.34 1.41538461538
+98.22 0.792920353982
+97.22 1.07450980392
+121.83 1.35454545455
+124.37 0.953398058252
+121.85 1.40188679245
+34.57 -1.68039215686
+34.77 -1.70291262136
+30.27 -0.854
+64.41 -2.37943925234
+65.63 -2.70873786408
+66.3 -2.924
+98.28 -4.40594059406
+92.93 -3.12962962963
+100.76 -4.89702970297
+126.7 -4.57142857143
+127.19 -4.62075471698
+116.07 -2.62156862745
+157.59 -5.34150943396
+155.98 -5.08571428571
+158.24 -5.51619047619
+13.3 2.57425742574
+14.58 2.11171171171
+12.02 2.64444444444
+46.54 0.960747663551
+46.23 0.990909090909
+45.33 1.23300970874
+70.48 1.15084745763
+74.92 0.447619047619
+74.05 0.575
+101.54 0.330357142857
+104.05 -0.12
+105 -0.31568627451
+129.36 0.454368932039
+130.1 0.296296296296
+132.91 -0.1936
+0 4.89259259259
+1.96 4.14576271186
+6.21 3.5147826087
+29.38 4.14086956522
+37.2 3.01698113208
+26 4.98899082569
+58.22 3.40526315789
+67.24 2.078
+67.49 2.00792079208
+88.56 2.55555555556
+88.22 3.19223300971
+75.7 5.36296296296
+113.06 3.40833333333
+122.4 2.0018018018
+119.49 2.77623762376
+35.32 -1.72711864407
+34.01 -1.72427184466
+30.02 -0.897247706422
+68.59 -3.62666666667
+72.84 -4.31296296296
+64.3 -2.5652173913
+97.64 -3.58699186992
+96.66 -4.216
+94.56 -3.0368
+127.67 -4.22950819672
+124.6 -4.41359223301
+128.87 -5.29411764706
+154.93 -6.214
+159.1 -5.82479338843
+158.06 -6.64077669903
+7.7 3.486
+9.9 2.74414414414
+2.05 4.08495575221
+36.84 2.31090909091
+42.85 1.06349206349
+36.43 2.30175438596
+66.1 1.72363636364
+66.79 1.65849056604
+66.78 1.72549019608
+100.68 0.231067961165
+104.25 -0.457692307692
+101.76 0.0205607476636
+133.54 -1.77614678899
+129.62 -1.01946902655
+133.58 -1.85142857143
+15.01 2.20192307692
+13.44 2.05039370079
+15.67 1.82881355932
+46.8 1.01754385965
+46.38 0.979527559055
+43.49 1.71886792453
+72.92 0.982857142857
+72.41 1.02162162162
+74.17 0.646280991736
+94.23 2.83333333333
+104.57 0.877876106195
+105.81 0.664285714286
+133.99 0.398245614035
+132.74 0.645871559633
+124.5 2.0452173913
+};
+\nextgroupplot[title={0.5 M Mg}]
+\addplot[gray,dashed] coordinates {(0,0) (190,0)};
+\addplot[only marks,mark=*,mark size=1.25pt,blue!55!black] table[header=false] {
+15.87 1.80192307692
+16.11 1.72264150943
+22.03 0.548717948718
+48.07 0.470909090909
+43.46 1.34579439252
+45.75 0.944230769231
+81.16 -0.780392156863
+80.55 -0.660784313725
+83.66 -1.27058823529
+113.28 -2.31881188119
+117.65 -3.15294117647
+112.96 -1.96379310345
+132.31 -0.478947368421
+131.79 -0.387719298246
+133.96 -0.775221238938
+3.69 4.20943396226
+4.73 3.57478991597
+5.3 3.79816513761
+15.83 6.18103448276
+24.83 4.2619047619
+22.56 5.49433962264
+52.04 4.36181818182
+52.34 4.51238095238
+55.29 4.06666666667
+86.14 3.03853211009
+83.61 3.63619047619
+82 3.98076923077
+102.63 4.29838709677
+109.78 3.71428571429
+11.69 21.1873873874
+15.93 1.88514851485
+14.89 2.112
+12.01 2.48888888889
+38.11 2.28269230769
+37.86 2.24444444444
+36.88 2.3185840708
+68.53 1.74615384615
+68.39 1.82574257426
+64.24 2.59611650485
+89.27 2.5619047619
+84.03 3.56
+85.81 3.22095238095
+117.3 1.79439252336
+120.2 1.34
+117.42 1.77196261682
+12.3 2.53703703704
+9.09 2.72741935484
+17.05 1.61261261261
+47.34 0.834615384615
+37.91 2.35384615385
+54.65 -0.594
+81.62 -1.09607843137
+77.18 -0.194915254237
+77.91 -0.372277227723
+103.56 -0.159259259259
+101.86 0.166336633663
+107.69 -0.978431372549
+134.78 -1.03773584906
+135.16 -1.12
+142.97 -2.738
+8.4 3.25454545455
+5.36 3.46115702479
+8.03 3.15
+31.62 3.71481481481
+33.07 3.02601626016
+36.04 2.95094339623
+70.22 1.35576923077
+65.85 2.15471698113
+64.48 1.98294573643
+97.54 1.09345794393
+93.22 2.01386138614
+97.49 1.16831683168
+128.49 0.623300970874
+126.27 1.086
+119.87 2.34257425743
+5.32 4.17821782178
+0.8 4.78878504673
+0.27 5.12745098039
+14.63 6.59145299145
+22.56 5.89038461538
+20.08 6.55643564356
+45.63 6.4
+42.37 6.98217821782
+43.38 6.46226415094
+81.17 4.698
+69.28 6.55185185185
+72.77 6.07428571429
+100.77 6.41960784314
+82.99 10.104
+92.79 6.84369747899
+22.41 0.477192982456
+17.5 1.4261682243
+21.49 0.728
+43.73 1.04864864865
+36.94 2.17413793103
+51.24 -0.328155339806
+85.7 -1.79115044248
+77.79 -0.387719298246
+81.39 -1.13921568627
+100.78 0.184745762712
+101.43 0.0822429906542
+110.88 -1.76666666667
+134.43 -1.87079646018
+140.47 -3.13396226415
+136.85 -2.27894736842
+1.12 4.2875
+0.96 4.31607142857
+6.16 3.68349514563
+28.12 4.24356435644
+26.09 4.15221238938
+28.79 4.07058823529
+56.01 3.59082568807
+54.37 3.3140625
+58.13 3.14414414414
+88.11 2.47927927928
+88.12 2.52293577982
+86.02 2.57723577236
+109.84 2.2253968254
+112.73 1.62481751825
+116.81 1.41
+15.23 2.20196078431
+13 2.49259259259
+9.36 3.42
+41.74 2.02990654206
+46.74 1.11619047619
+45.3 1.43137254902
+68.22 1.95247524752
+74.93 0.63
+67.54 1.95185185185
+92.95 3.07037037037
+105.18 0.852941176471
+102.93 1.1
+124.14 2.03697478992
+124.1 2.19099099099
+126.1 1.73675213675
+};
+\nextgroupplot[title={1 M Mg}]
+\addplot[gray,dashed] coordinates {(0,0) (190,0)};
+\addplot[only marks,mark=*,mark size=1.25pt,blue!55!black] table[header=false] {
+0.12 4.87766990291
+0.2 5.008
+0.11 4.2593220339
+3.24 9.29803921569
+1.84 9.764
+1.14 9.08623853211
+14.39 11.96
+11.34 11.7571428571
+14.46 11.5082568807
+35.39 11.6105263158
+42.95 11.4941176471
+31.97 12.8888888889
+90.11 7.30925925926
+89.68 7.98
+92.25 6.32711864407
+1.5 4.29824561404
+0.23 3.99534883721
+1.35 4.48181818182
+13.58 7.25714285714
+13.72 7.16226415094
+16.53 6.89215686275
+40.48 6.58333333333
+43.15 5.87142857143
+40.24 6.88269230769
+62.57 7.86862745098
+61.3 7.66666666667
+66.05 6.85046728972
+86.46 7.01967213115
+91.37 6.59304347826
+91.24 7.608
+11.25 2.73148148148
+14.12 2.28461538462
+6.86 3.44864864865
+31.5 3.44957264957
+37.64 2.64905660377
+37.29 2.82156862745
+60.18 2.90825688073
+54.86 3.81441441441
+58.05 3.32962962963
+86.2 3.20388349515
+89.26 2.688
+83.7 3.14049586777
+114.48 2.93069306931
+111.84 3.35384615385
+109.48 3.38461538462
+0.11 4.7504587156
+0.36 4.42068965517
+0.12 4.83738317757
+0.13 9.20535714286
+3.43 9.27884615385
+0.73 7.43795620438
+28.43 8
+30.95 8.66923076923
+32.55 7.97798165138
+66.02 7.05384615385
+68.13 6.34311926606
+59.21 8.20566037736
+80.2 8.53565217391
+96.07 6.44854368932
+95.49 6.69108910891
+0.33 4.4775862069
+0 4.91588785047
+0 5.1568627451
+6.14 7.17165354331
+13.63 6.56034482759
+20.73 5.11570247934
+30.65 7.83529411765
+37.87 6.15625
+56.83 4.04752475248
+75.57 5.564
+73.04 5.72641509434
+60.56 7.64821428571
+67.14 11.8458715596
+97.74 6.72475247525
+69.91 11.1333333333
+7.08 3.64905660377
+2.36 3.8496
+1.18 4.99801980198
+25.86 5.466
+18.15 6.25714285714
+22.54 5.47321428571
+49.13 5.32710280374
+37.36 7.32181818182
+40.7 7.24117647059
+56.6 8.73818181818
+36.65 13.4673267327
+53.65 9.80961538462
+67.08 11.5530434783
+71.67 12.2455445545
+83.4 9.92277227723
+0.29 4.55779816514
+0.49 4.52110091743
+0.55 4.59439252336
+14.42 6.69142857143
+14.97 6.46355140187
+22.1 5.43564356436
+38 7.09056603774
+30.21 7.37723577236
+44.76 5.31379310345
+70.84 6.206
+83.13 3.5358490566
+86.92 2.9603960396
+87.6 7.1801980198
+97.74 4.54260869565
+86.7 6.29830508475
+0.5 4.56111111111
+0.48 4.74038461538
+0.49 4.56296296296
+14.73 6.27387387387
+16.33 5.3152
+16.95 6.20952380952
+39.91 6.20347826087
+41.37 6.57884615385
+50.77 4.91287128713
+72.79 5.59230769231
+76.47 4.93203883495
+75.97 4.84112149533
+114.7 1.4656
+105.43 3.686
+95.05 4.68455284553
+12.54 2.50810810811
+12.17 2.69622641509
+13.3 2.48301886792
+28.19 4.882
+36.08 2.97657657658
+35.4 3.24528301887
+63.5 2.31428571429
+64.45 2.43392857143
+60.95 2.97913043478
+92.13 2.9243697479
+94.2 2.78727272727
+96.45 2.53980582524
+108 5.18532110092
+125.49 1.97614678899
+122.77 2.54528301887
+};
+\end{groupplot}
+\end{tikzpicture}
+\caption{All 540 archived isotherm observations, separated by Mg activation concentration, with common axes. Points pool three feedstocks and three temperatures within each panel (135 points). Negative values indicate net release; the dashed line denotes zero. No curve fitting, smoothing, inferred replicate identities, or independence assumption is used. Coincident points may overlap. Source: Dryad isotherm worksheet~\cite{dryad}.}
+\label{fig:raw}
+\end{figure}
+
+\section{Interpretation and limitations}
+\subsection{Saturation capacity is not removal at a target concentration}
+A fitted maximum does not determine uptake at a specific water concentration. In the Langmuir form,
+\begin{equation}
+q(C_e)=\frac{P_{\max}K C_e}{1+K C_e},
+\end{equation}
+the affinity parameter $K$ is required along with $P_{\max}$. The analyzed table does not supply $K$. Consequently, it cannot support predicting effluent quality or sizing a treatment unit for a specified dilute influent. Extrapolation from 24-hour batch tests to short-contact runoff treatment also requires kinetic and transport evidence. Fitting a linearized isotherm changes the error structure relative to fitting the original concentration-response relationship; residual diagnostics and alternative fits cannot be checked from these summaries.
+
+\subsection{Sampling and uncertainty}
+These 36 formulations belong to one experiment and do not represent 36 independent studies or manufacturing batches. Feedstock age labels are also material identities; they do not isolate an age effect from all other feedstock differences. Source-reported parameter SE does not quantify scale-up variation, seasonal water chemistry, aging, or field-to-field variation. No claim of a general optimum, a causal Mg dose response, or a reduction in agricultural P export follows from this analysis.
+
+Conditioning on a fit screen changes the composition of each activation subset. Comparing retained means without accounting for that selection could overstate a material advantage. NR and excluded fits therefore remain visible in the denominators and full inventory. Low $R^2$ can identify an unreliable capacity estimate without identifying the physical reason for the poor fit.
+
+\subsection{Source fidelity}
+The table reports PL7/0.25~M/900~$^\circ$C as $0.62\pm0.06$~mg~P/g with $R^2=0.96$, whereas the article narrative reports a minimum of 0.66~mg~P/g. The tabulated value was retained without correction and is flagged for author or model-reconstruction verification. All 36 formulation summaries are provided in Appendix~\ref{app:inventory}. Access to the workbook resolves the earlier download limitation, but descriptive extraction alone does not resolve this table/text discrepancy or reproduce the original model fitting. Formal comparisons require a reviewed error model and experimental-unit mapping.
+
+\section{A proposed validation study for runoff applications}
+The next experiment should ask whether candidate materials remove P from the target water at realistic contact times and retain it through subsequent exposure. This is a proposed protocol, not an experiment performed in the present work.
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,>=Latex,font=\small]
+\fill[blue!10] (0.2,0.8) rectangle (2.1,2.3);
+\draw[thick] (0.2,3.2) -- (0.2,0.8) -- (2.1,0.8) -- (2.1,3.2);
+\draw[blue!50] (0.2,2.3) -- (2.1,2.3);
+\node[align=center] at (1.15,3.65) {Mixed influent\\target runoff water};
+\draw[->,thick] (2.1,1.3) -- (3.3,1.3);
+\draw[thick] (3.7,1.3) circle (0.4);
+\draw[->] (3.5,1.15) -- (3.9,1.45);
+\node[align=center] at (3.7,0.25) {Controlled\\pump};
+\draw[->,thick] (4.1,1.3) -- (6.3,1.3);
+\draw[thick] (6.3,0.8) rectangle (8.2,4.2);
+\fill[pattern=dots,pattern color=black!50] (6.4,1.5) rectangle (8.1,3.65);
+\draw (6.3,1.5) -- (8.2,1.5) (6.3,3.65) -- (8.2,3.65);
+\draw[->,very thick,blue!60!black] (7.25,1.7) -- (7.25,3.4);
+\node[align=center] at (7.25,4.65) {Biochar column\\known dry mass $m$};
+\draw[<->] (8.55,1.5) -- (8.55,3.65);
+\node[anchor=west] at (8.6,2.5) {$L$};
+\draw[->,thick] (8.2,3.95) -- (12.25,3.95) -- (12.25,2.4);
+\fill[blue!10] (11.2,0.7) rectangle (13.3,1.65);
+\draw[thick] (11.2,2.3) -- (11.2,0.7) -- (13.3,0.7) -- (13.3,2.3);
+\node[align=center] at (12.25,0.1) {Timed effluent\\collection};
+\fill (5.05,1.3) circle (2pt);
+\draw (5.05,1.3) -- (5.05,2.2);
+\node[align=center] at (4.65,2.8) {Inlet sample\\$C_{\rm in}(t),Q_{\rm in}(t)$};
+\fill (10.1,3.95) circle (2pt);
+\draw (10.1,3.95) -- (10.1,4.6);
+\node[align=center] at (11,5.05) {Outlet sample\\$C_{\rm out}(t),Q_{\rm out}(t)$};
+\node[draw,rounded corners,align=center,text width=13cm,fill=gray!5] at (6.8,-1.2)
+ {Measure loads: $M_{\rm in}=\int Q_{\rm in}C_{\rm in}\,dt$ and $M_{\rm out}=\int Q_{\rm out}C_{\rm out}\,dt$.\\Run blanks and control columns; repeat events and test later P release.};
+\end{tikzpicture}
+\caption{Proposed upflow-column experiment linking material screening to P-load measurements. Schematic only, not to scale and not a description of apparatus used in the source study. Column dimensions, bed length $L$, flow, material mass and sampling schedule must be selected and recorded for the target application. The drawing specifies measurement locations, not an engineered treatment-unit design.}
+\label{fig:column}
+\end{figure}
+
+\textbf{Candidate and control selection.} Include several retained 1~M formulations spanning production temperatures, a lower-activation candidate, unmodified biochar and a no-biochar control. Use independently prepared biochar batches as experimental units where manufacturing reproducibility is the question. Randomize units and choose replication from a pilot estimate of variance and a stated minimum useful effect; the current fit SE should not be substituted for that variance.
+
+\textbf{Mass balance and release.} Measure dissolved reactive P and total P, water volume or flow, initial and final pH, background ions, dissolved organic carbon and relevant material-derived constituents. Include no-added-P leaching controls. For a closed batch with consistent volumes, apparent net removal per unit biochar is
+\begin{equation}
+q_{\rm net}=\frac{(C_0-C_t)V}{m}.
+\end{equation}
+Here, $C$ is in mg~P/L, $V$ in L and $m$ in g. This is an apparent aqueous mass difference; a no-biochar blank and volume accounting are needed to distinguish material-associated removal from other losses. Subsequent clean-water exposures should test desorption or release rather than assuming that initial removal is permanent.
+
+\textbf{Flow and repeated events.} A column or rainfall experiment should retain separate inlet and outlet flow measurements and calculate
+\begin{equation}
+M_{\rm retained}=\int Q_{\rm in}(t)C_{\rm in}(t)\,dt
+                -\int Q_{\rm out}(t)C_{\rm out}(t)\,dt.
+\end{equation}
+Sampling removals, storage changes and solid-phase P need accounting when interpreting this balance. Concentration reduction alone is not equivalent to reduced P export when flow differs. Follow repeated events to identify breakthrough, clogging, aging and remobilization. For particulate P, distinguish physical particle retention from dissolved-phosphate sorption.
+
+\textbf{GIGI data structure.} A follow-up dataset should identify site, event, experimental unit, batch, material, control, sample time, assay method, detection limit, concentration, flow and units. Store below-detection results with qualifiers rather than silently replacing them with zero. Keep calibration and blank records traceable. These records would support event-level mass balances, batch comparisons and future models validated on entirely held-out batches or sites.
+
+\section{Conclusion}
+Keeping fit diagnostics and missing-result labels alongside capacity estimates materially changes a biochar shortlist. In this published dataset, the primary screen retains 16 of 36 formulations and all nine 1~M formulations, while sensitivity analysis changes the highest-ranked recipe. GIGI reproduced the filtering, ranking and aggregation against independent checks. The result is a transparent starting point for targeted experiments. Demonstrating reduced runoff requires measurements of P loads, contact-time performance and subsequent release under the intended application conditions.
+
+\section*{Data and code availability}
+The accompanying repository, \url{https://github.com/nurdymuny/gigi-biochar}, contains an attributed source-table excerpt, the unchanged Dryad workbook and README, SHA-256 provenance records, both normalized datasets in JSON and CSV, deterministic analysis, automated tests, exact live GIGI receipts and this standalone LaTeX manuscript. Technical drawings and plotted data are embedded as vector LaTeX graphics. The engine is obtained separately from its upstream repository~\cite{gigi}; this analysis does not redistribute or relicense it. Published source data retain their original attribution and reuse terms.
+
+\section*{Preparation and authorship}
+This research note was prepared with AI assistance for scientific discussion. No new laboratory work was conducted. Authorship, affiliations, funding and competing-interest declarations should be supplied and verified by the responsible researchers before any journal submission or public scholarly release. The computational checks do not replace scientific review of the source data and interpretation.
+
+\begin{thebibliography}{9}
+\bibitem{padilla} Padilla JT, Watts DW, Novak JM, Cerven V, Ippolito JA, Szogi AA, Johnson MG. Magnesium activation affects the properties and phosphate sorption capacity of poultry litter biochar. \emph{Biochar}. 2023;5:64. \href{https://doi.org/10.1007/s42773-023-00263-5}{doi:10.1007/s42773-023-00263-5}. Table~1 and experimental methods.
+\bibitem{dryad} Padilla J, Watts DW, Novak JM, et al. Digital research data from: Magnesium activation affects the properties and phosphate sorption capacity of poultry litter biochar. Dryad; version 10 October 2023. \href{https://doi.org/10.5061/dryad.pc866t1w7}{doi:10.5061/dryad.pc866t1w7}. Isotherm worksheet analyzed descriptively; source files preserved unchanged.
+\bibitem{gigi} GIGI source repository. \url{https://github.com/nurdymuny/gigi}. Accessed 5 October 2026. Engine distributed separately under its stated license; live execution evidence is supplied with the analysis repository.
+\end{thebibliography}
+
+\clearpage
+\appendix
+\section{Complete formulation inventory}\label{app:inventory}
+\small
+Values below reproduce the source table after expansion to one formulation per row. Mg is activation solution concentration (M); temperature is in $^\circ$C; capacity is mg~P/g biochar $\pm$ reported SE. ``Retained'' means $R^2>0.80$. NR preserves the source label and does not quantify a release rate. PL1, PL3 and PL7 denote litter age categories of 1, 3--5 and 7--9 years.
+\begin{longtable}{@{}rrr r l r l@{}}
+\caption{All published formulation summaries and the derived primary screening status.}\label{tab:inventory}\\
+\toprule ID & Feedstock & Mg & Temp. & Capacity $\pm$ SE & $R^2$ & Status\\\midrule
+\endfirsthead
+\multicolumn{7}{l}{\textit{Table~\thetable\ continued}}\\
+\toprule ID & Feedstock & Mg & Temp. & Capacity $\pm$ SE & $R^2$ & Status\\\midrule
+\endhead
+\midrule\multicolumn{7}{r}{\textit{Continued on next page}}\\\endfoot
+\bottomrule\endlastfoot
+1 & PL1 & 0 & 500 & NR & -- & NR \\
+2 & PL1 & 0 & 700 & NR & -- & NR \\
+3 & PL1 & 0 & 900 & NR & -- & NR \\
+4 & PL1 & 0.25 & 500 & 14.52 $\pm$ 6.58 & 0.27 & Excluded \\
+5 & PL1 & 0.25 & 700 & 4.10 $\pm$ 0.17 & 0.92 & Retained \\
+6 & PL1 & 0.25 & 900 & 0.66 $\pm$ 0.12 & 0.83 & Retained \\
+7 & PL1 & 0.5 & 500 & NR & -- & NR \\
+8 & PL1 & 0.5 & 700 & 2.39 $\pm$ 0.29 & 0.93 & Retained \\
+9 & PL1 & 0.5 & 900 & 1.67 $\pm$ 0.22 & 0.91 & Retained \\
+10 & PL1 & 1 & 500 & 8.55 $\pm$ 0.97 & 0.94 & Retained \\
+11 & PL1 & 1 & 700 & 7.41 $\pm$ 0.23 & 1.00 & Retained \\
+12 & PL1 & 1 & 900 & 2.60 $\pm$ 0.25 & 0.96 & Retained \\
+13 & PL3 & 0 & 500 & NR & -- & NR \\
+14 & PL3 & 0 & 700 & 0.56 $\pm$ 0.25 & 0.59 & Excluded \\
+15 & PL3 & 0 & 900 & 3.36 $\pm$ 2.12 & 0.25 & Excluded \\
+16 & PL3 & 0.25 & 500 & NR & -- & NR \\
+17 & PL3 & 0.25 & 700 & NR & -- & NR \\
+18 & PL3 & 0.25 & 900 & 1.19 $\pm$ 0.31 & 0.67 & Excluded \\
+19 & PL3 & 0.5 & 500 & NR & -- & NR \\
+20 & PL3 & 0.5 & 700 & 0.38 $\pm$ 0.11 & 0.60 & Excluded \\
+21 & PL3 & 0.5 & 900 & 5.33 $\pm$ 0.60 & 0.94 & Retained \\
+22 & PL3 & 1 & 500 & 6.32 $\pm$ 0.32 & 0.99 & Retained \\
+23 & PL3 & 1 & 700 & 7.43 $\pm$ 0.83 & 0.94 & Retained \\
+24 & PL3 & 1 & 900 & 10.35 $\pm$ 1.45 & 0.90 & Retained \\
+25 & PL7 & 0 & 500 & NR & -- & NR \\
+26 & PL7 & 0 & 700 & NR & -- & NR \\
+27 & PL7 & 0 & 900 & NR & -- & NR \\
+28 & PL7 & 0.25 & 500 & NR & -- & NR \\
+29 & PL7 & 0.25 & 700 & 1.17 $\pm$ 1.03 & 0.01 & Excluded \\
+30 & PL7 & 0.25 & 900 & 0.62 $\pm$ 0.06 & 0.96 & Retained \\
+31 & PL7 & 0.5 & 500 & 134.41 $\pm$ 133.98 & 0.00 & Excluded \\
+32 & PL7 & 0.5 & 700 & 0.95 $\pm$ 0.19 & 0.79 & Excluded \\
+33 & PL7 & 0.5 & 900 & 4.25 $\pm$ 0.21 & 0.85 & Retained \\
+34 & PL7 & 1 & 500 & 4.90 $\pm$ 0.61 & 0.92 & Retained \\
+35 & PL7 & 1 & 700 & 2.84 $\pm$ 0.40 & 0.90 & Retained \\
+36 & PL7 & 1 & 900 & 5.41 $\pm$ 1.85 & 0.96 & Retained \\
+\end{longtable}
+\end{document}

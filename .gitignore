@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.runtime/
+build/
+build-latex-output.txt
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.synctex.gz
+*.zip

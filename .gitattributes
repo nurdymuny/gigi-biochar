@@ -1,0 +1,6 @@
+* text=auto eol=lf
+*.pdf binary
+*.xlsx binary
+data/source/dryad/README.md -text
+# Preserve the archived source bytes used by the provenance checksum.
+data/source/table1.html -text

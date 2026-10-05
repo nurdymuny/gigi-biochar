@@ -1,0 +1,1818 @@
+{
+  "checked_at_utc": "2026-10-05T13:15:14.864631+00:00",
+  "bundle": "biochar_capture_paper_v1",
+  "source_sha256": "edab8b64f30c3de31628b91b2d4818b03970c16c82b3e0f5d2013f0fcfd17397",
+  "checks": [
+    "Planted ranking",
+    "Mechanism-removed negative control",
+    "Complete row roundtrip",
+    "Five threshold rankings",
+    "Grouped counts and means"
+  ],
+  "receipts": [
+    {
+      "path": "/v1/bundles/biochar_capture_paper_gate_v1/query",
+      "request": {
+        "limit": 1000
+      },
+      "status": 200,
+      "response": {
+        "data": [
+          {
+            "id": 1,
+            "pmax": 9999.0,
+            "r_squared": 0.01
+          },
+          {
+            "id": 2,
+            "pmax": 5.0,
+            "r_squared": 0.95
+          }
+        ],
+        "meta": {
+          "confidence": 0.8,
+          "curvature": 0.25,
+          "lambda_budget": 0.999999679615657,
+          "count": 2,
+          "total": 2,
+          "offset": 0,
+          "limit": 1000,
+          "next_offset": 2,
+          "truncated": false,
+          "engine_cap_hit": false
+        }
+      }
+    },
+    {
+      "path": "/v1/bundles/biochar_capture_paper_gate_v1/query",
+      "request": {
+        "conditions": [
+          {
+            "field": "r_squared",
+            "op": "gt",
+            "value": 0.8
+          }
+        ],
+        "sort": [
+          {
+            "field": "pmax",
+            "desc": true
+          }
+        ],
+        "limit": 1
+      },
+      "status": 200,
+      "response": {
+        "data": [
+          {
+            "id": 2,
+            "pmax": 5.0,
+            "r_squared": 0.95
+          }
+        ],
+        "meta": {
+          "confidence": 0.8,
+          "curvature": 0.25,
+          "lambda_budget": 0.999999679615657,
+          "count": 1,
+          "total": 1,
+          "offset": 0,
+          "limit": 1,
+          "next_offset": 1,
+          "truncated": false,
+          "engine_cap_hit": false
+        }
+      }
+    },
+    {
+      "path": "/v1/bundles/biochar_capture_paper_gate_v1/query",
+      "request": {
+        "sort": [
+          {
+            "field": "pmax",
+            "desc": true
+          }
+        ],
+        "limit": 1
+      },
+      "status": 200,
+      "response": {
+        "data": [
+          {
+            "id": 1,
+            "pmax": 9999.0,
+            "r_squared": 0.01
+          }
+        ],
+        "meta": {
+          "confidence": 0.8,
+          "curvature": 0.25,
+          "lambda_budget": 0.999999679615657,
+          "count": 1,
+          "total": 2,
+          "offset": 0,
+          "limit": 1,
+          "next_offset": 1,
+          "truncated": true,
+          "engine_cap_hit": false
+        }
+      }
+    },
+    {
+      "path": "/v1/bundles/biochar_capture_paper_v1/query",
+      "request": {
+        "limit": 1000
+      },
+      "status": 200,
+      "response": {
+        "data": [
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "NR: net P release (source table label)",
+            "id": 1,
+            "mg_activation_molar": 0.0,
+            "pmax_mg_p_per_g_biochar": null,
+            "pmax_se_mg_p_per_g_biochar": null,
+            "pyrolysis_c": 500,
+            "r_squared": null,
+            "source_cell": "NRa",
+            "source_table_row": 1,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "NR: net P release (source table label)",
+            "id": 2,
+            "mg_activation_molar": 0.0,
+            "pmax_mg_p_per_g_biochar": null,
+            "pmax_se_mg_p_per_g_biochar": null,
+            "pyrolysis_c": 700,
+            "r_squared": null,
+            "source_cell": "NRa",
+            "source_table_row": 1,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "NR: net P release (source table label)",
+            "id": 3,
+            "mg_activation_molar": 0.0,
+            "pmax_mg_p_per_g_biochar": null,
+            "pmax_se_mg_p_per_g_biochar": null,
+            "pyrolysis_c": 900,
+            "r_squared": null,
+            "source_cell": "NRa",
+            "source_table_row": 1,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "poor Langmuir fit: R2 <= 0.80",
+            "id": 4,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": 14.52,
+            "pmax_se_mg_p_per_g_biochar": 6.58,
+            "pyrolysis_c": 500,
+            "r_squared": 0.27,
+            "source_cell": "14.52 \u00b1 6.58",
+            "source_table_row": 2,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 5,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": 4.1,
+            "pmax_se_mg_p_per_g_biochar": 0.17,
+            "pyrolysis_c": 700,
+            "r_squared": 0.92,
+            "source_cell": "4.10 \u00b1 0.17",
+            "source_table_row": 2,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 6,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": 0.66,
+            "pmax_se_mg_p_per_g_biochar": 0.12,
+            "pyrolysis_c": 900,
+            "r_squared": 0.83,
+            "source_cell": "0.66 \u00b1 0.12",
+            "source_table_row": 2,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "NR: net P release (source table label)",
+            "id": 7,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": null,
+            "pmax_se_mg_p_per_g_biochar": null,
+            "pyrolysis_c": 500,
+            "r_squared": null,
+            "source_cell": "NR",
+            "source_table_row": 3,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 8,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 2.39,
+            "pmax_se_mg_p_per_g_biochar": 0.29,
+            "pyrolysis_c": 700,
+            "r_squared": 0.93,
+            "source_cell": "2.39 \u00b1 0.29",
+            "source_table_row": 3,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 9,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 1.67,
+            "pmax_se_mg_p_per_g_biochar": 0.22,
+            "pyrolysis_c": 900,
+            "r_squared": 0.91,
+            "source_cell": "1.67 \u00b1 0.22",
+            "source_table_row": 3,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 10,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 8.55,
+            "pmax_se_mg_p_per_g_biochar": 0.97,
+            "pyrolysis_c": 500,
+            "r_squared": 0.94,
+            "source_cell": "8.55 \u00b1 0.97",
+            "source_table_row": 4,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 11,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 7.41,
+            "pmax_se_mg_p_per_g_biochar": 0.23,
+            "pyrolysis_c": 700,
+            "r_squared": 1.0,
+            "source_cell": "7.41 \u00b1 0.23",
+            "source_table_row": 4,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 12,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 2.6,
+            "pmax_se_mg_p_per_g_biochar": 0.25,
+            "pyrolysis_c": 900,
+            "r_squared": 0.96,
+            "source_cell": "2.60 \u00b1 0.25",
+            "source_table_row": 4,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "NR: net P release (source table label)",
+            "id": 13,
+            "mg_activation_molar": 0.0,
+            "pmax_mg_p_per_g_biochar": null,
+            "pmax_se_mg_p_per_g_biochar": null,
+            "pyrolysis_c": 500,
+            "r_squared": null,
+            "source_cell": "NRa",
+            "source_table_row": 5,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "poor Langmuir fit: R2 <= 0.80",
+            "id": 14,
+            "mg_activation_molar": 0.0,
+            "pmax_mg_p_per_g_biochar": 0.56,
+            "pmax_se_mg_p_per_g_biochar": 0.25,
+            "pyrolysis_c": 700,
+            "r_squared": 0.59,
+            "source_cell": "0.56 \u00b1 0.25",
+            "source_table_row": 5,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "poor Langmuir fit: R2 <= 0.80",
+            "id": 15,
+            "mg_activation_molar": 0.0,
+            "pmax_mg_p_per_g_biochar": 3.36,
+            "pmax_se_mg_p_per_g_biochar": 2.12,
+            "pyrolysis_c": 900,
+            "r_squared": 0.25,
+            "source_cell": "3.36 \u00b1 2.12",
+            "source_table_row": 5,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "NR: net P release (source table label)",
+            "id": 16,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": null,
+            "pmax_se_mg_p_per_g_biochar": null,
+            "pyrolysis_c": 500,
+            "r_squared": null,
+            "source_cell": "NRa",
+            "source_table_row": 6,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "NR: net P release (source table label)",
+            "id": 17,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": null,
+            "pmax_se_mg_p_per_g_biochar": null,
+            "pyrolysis_c": 700,
+            "r_squared": null,
+            "source_cell": "aNR",
+            "source_table_row": 6,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "poor Langmuir fit: R2 <= 0.80",
+            "id": 18,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": 1.19,
+            "pmax_se_mg_p_per_g_biochar": 0.31,
+            "pyrolysis_c": 900,
+            "r_squared": 0.67,
+            "source_cell": "1.19 \u00b1 0.31",
+            "source_table_row": 6,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "NR: net P release (source table label)",
+            "id": 19,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": null,
+            "pmax_se_mg_p_per_g_biochar": null,
+            "pyrolysis_c": 500,
+            "r_squared": null,
+            "source_cell": "NRa",
+            "source_table_row": 7,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "poor Langmuir fit: R2 <= 0.80",
+            "id": 20,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 0.38,
+            "pmax_se_mg_p_per_g_biochar": 0.11,
+            "pyrolysis_c": 700,
+            "r_squared": 0.6,
+            "source_cell": "0.38 \u00b1 0.11",
+            "source_table_row": 7,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 21,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 5.33,
+            "pmax_se_mg_p_per_g_biochar": 0.6,
+            "pyrolysis_c": 900,
+            "r_squared": 0.94,
+            "source_cell": "5.33 \u00b1 0.60",
+            "source_table_row": 7,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 22,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 6.32,
+            "pmax_se_mg_p_per_g_biochar": 0.32,
+            "pyrolysis_c": 500,
+            "r_squared": 0.99,
+            "source_cell": "6.32 \u00b1 0.32",
+            "source_table_row": 8,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 23,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 7.43,
+            "pmax_se_mg_p_per_g_biochar": 0.83,
+            "pyrolysis_c": 700,
+            "r_squared": 0.94,
+            "source_cell": "7.43 \u00b1 0.83",
+            "source_table_row": 8,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 24,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 10.35,
+            "pmax_se_mg_p_per_g_biochar": 1.45,
+            "pyrolysis_c": 900,
+            "r_squared": 0.9,
+            "source_cell": "10.35 \u00b1 1.45",
+            "source_table_row": 8,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "NR: net P release (source table label)",
+            "id": 25,
+            "mg_activation_molar": 0.0,
+            "pmax_mg_p_per_g_biochar": null,
+            "pmax_se_mg_p_per_g_biochar": null,
+            "pyrolysis_c": 500,
+            "r_squared": null,
+            "source_cell": "NRa",
+            "source_table_row": 9,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "NR: net P release (source table label)",
+            "id": 26,
+            "mg_activation_molar": 0.0,
+            "pmax_mg_p_per_g_biochar": null,
+            "pmax_se_mg_p_per_g_biochar": null,
+            "pyrolysis_c": 700,
+            "r_squared": null,
+            "source_cell": "NRa",
+            "source_table_row": 9,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "NR: net P release (source table label)",
+            "id": 27,
+            "mg_activation_molar": 0.0,
+            "pmax_mg_p_per_g_biochar": null,
+            "pmax_se_mg_p_per_g_biochar": null,
+            "pyrolysis_c": 900,
+            "r_squared": null,
+            "source_cell": "NRa",
+            "source_table_row": 9,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "NR: net P release (source table label)",
+            "id": 28,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": null,
+            "pmax_se_mg_p_per_g_biochar": null,
+            "pyrolysis_c": 500,
+            "r_squared": null,
+            "source_cell": "NRa",
+            "source_table_row": 10,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "poor Langmuir fit: R2 <= 0.80",
+            "id": 29,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": 1.17,
+            "pmax_se_mg_p_per_g_biochar": 1.03,
+            "pyrolysis_c": 700,
+            "r_squared": 0.01,
+            "source_cell": "1.17 \u00b1 1.03",
+            "source_table_row": 10,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 30,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": 0.62,
+            "pmax_se_mg_p_per_g_biochar": 0.06,
+            "pyrolysis_c": 900,
+            "r_squared": 0.96,
+            "source_cell": "0.62 \u00b1 0.06",
+            "source_table_row": 10,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "poor Langmuir fit: R2 <= 0.80",
+            "id": 31,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 134.41,
+            "pmax_se_mg_p_per_g_biochar": 133.98,
+            "pyrolysis_c": 500,
+            "r_squared": 0.0,
+            "source_cell": "134.41 \u00b1 133.98",
+            "source_table_row": 11,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "poor Langmuir fit: R2 <= 0.80",
+            "id": 32,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 0.95,
+            "pmax_se_mg_p_per_g_biochar": 0.19,
+            "pyrolysis_c": 700,
+            "r_squared": 0.79,
+            "source_cell": "0.95 \u00b1 0.19",
+            "source_table_row": 11,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 33,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 4.25,
+            "pmax_se_mg_p_per_g_biochar": 0.21,
+            "pyrolysis_c": 900,
+            "r_squared": 0.85,
+            "source_cell": "4.25 \u00b1 0.21",
+            "source_table_row": 11,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 34,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 4.9,
+            "pmax_se_mg_p_per_g_biochar": 0.61,
+            "pyrolysis_c": 500,
+            "r_squared": 0.92,
+            "source_cell": "4.90 \u00b1 0.61",
+            "source_table_row": 12,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 35,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 2.84,
+            "pmax_se_mg_p_per_g_biochar": 0.4,
+            "pyrolysis_c": 700,
+            "r_squared": 0.9,
+            "source_cell": "2.84 \u00b1 0.40",
+            "source_table_row": 12,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 36,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 5.41,
+            "pmax_se_mg_p_per_g_biochar": 1.85,
+            "pyrolysis_c": 900,
+            "r_squared": 0.96,
+            "source_cell": "5.41 \u00b1 1.85",
+            "source_table_row": 12,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          }
+        ],
+        "meta": {
+          "confidence": 0.9131303046323874,
+          "curvature": 0.09513395287278857,
+          "lambda_budget": 0.9977537381011353,
+          "count": 36,
+          "total": 36,
+          "offset": 0,
+          "limit": 1000,
+          "next_offset": 36,
+          "truncated": false,
+          "engine_cap_hit": false
+        }
+      }
+    },
+    {
+      "path": "/v1/bundles/biochar_capture_paper_v1/query",
+      "request": {
+        "conditions": [
+          {
+            "field": "r_squared",
+            "op": "gt",
+            "value": 0.7
+          }
+        ],
+        "sort": [
+          {
+            "field": "pmax_mg_p_per_g_biochar",
+            "desc": true
+          }
+        ],
+        "limit": 1000
+      },
+      "status": 200,
+      "response": {
+        "data": [
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 24,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 10.35,
+            "pmax_se_mg_p_per_g_biochar": 1.45,
+            "pyrolysis_c": 900,
+            "r_squared": 0.9,
+            "source_cell": "10.35 \u00b1 1.45",
+            "source_table_row": 8,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 10,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 8.55,
+            "pmax_se_mg_p_per_g_biochar": 0.97,
+            "pyrolysis_c": 500,
+            "r_squared": 0.94,
+            "source_cell": "8.55 \u00b1 0.97",
+            "source_table_row": 4,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 23,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 7.43,
+            "pmax_se_mg_p_per_g_biochar": 0.83,
+            "pyrolysis_c": 700,
+            "r_squared": 0.94,
+            "source_cell": "7.43 \u00b1 0.83",
+            "source_table_row": 8,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 11,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 7.41,
+            "pmax_se_mg_p_per_g_biochar": 0.23,
+            "pyrolysis_c": 700,
+            "r_squared": 1.0,
+            "source_cell": "7.41 \u00b1 0.23",
+            "source_table_row": 4,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 22,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 6.32,
+            "pmax_se_mg_p_per_g_biochar": 0.32,
+            "pyrolysis_c": 500,
+            "r_squared": 0.99,
+            "source_cell": "6.32 \u00b1 0.32",
+            "source_table_row": 8,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 36,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 5.41,
+            "pmax_se_mg_p_per_g_biochar": 1.85,
+            "pyrolysis_c": 900,
+            "r_squared": 0.96,
+            "source_cell": "5.41 \u00b1 1.85",
+            "source_table_row": 12,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 21,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 5.33,
+            "pmax_se_mg_p_per_g_biochar": 0.6,
+            "pyrolysis_c": 900,
+            "r_squared": 0.94,
+            "source_cell": "5.33 \u00b1 0.60",
+            "source_table_row": 7,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 34,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 4.9,
+            "pmax_se_mg_p_per_g_biochar": 0.61,
+            "pyrolysis_c": 500,
+            "r_squared": 0.92,
+            "source_cell": "4.90 \u00b1 0.61",
+            "source_table_row": 12,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 33,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 4.25,
+            "pmax_se_mg_p_per_g_biochar": 0.21,
+            "pyrolysis_c": 900,
+            "r_squared": 0.85,
+            "source_cell": "4.25 \u00b1 0.21",
+            "source_table_row": 11,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 5,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": 4.1,
+            "pmax_se_mg_p_per_g_biochar": 0.17,
+            "pyrolysis_c": 700,
+            "r_squared": 0.92,
+            "source_cell": "4.10 \u00b1 0.17",
+            "source_table_row": 2,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 35,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 2.84,
+            "pmax_se_mg_p_per_g_biochar": 0.4,
+            "pyrolysis_c": 700,
+            "r_squared": 0.9,
+            "source_cell": "2.84 \u00b1 0.40",
+            "source_table_row": 12,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 12,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 2.6,
+            "pmax_se_mg_p_per_g_biochar": 0.25,
+            "pyrolysis_c": 900,
+            "r_squared": 0.96,
+            "source_cell": "2.60 \u00b1 0.25",
+            "source_table_row": 4,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 8,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 2.39,
+            "pmax_se_mg_p_per_g_biochar": 0.29,
+            "pyrolysis_c": 700,
+            "r_squared": 0.93,
+            "source_cell": "2.39 \u00b1 0.29",
+            "source_table_row": 3,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 9,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 1.67,
+            "pmax_se_mg_p_per_g_biochar": 0.22,
+            "pyrolysis_c": 900,
+            "r_squared": 0.91,
+            "source_cell": "1.67 \u00b1 0.22",
+            "source_table_row": 3,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "poor Langmuir fit: R2 <= 0.80",
+            "id": 32,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 0.95,
+            "pmax_se_mg_p_per_g_biochar": 0.19,
+            "pyrolysis_c": 700,
+            "r_squared": 0.79,
+            "source_cell": "0.95 \u00b1 0.19",
+            "source_table_row": 11,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 6,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": 0.66,
+            "pmax_se_mg_p_per_g_biochar": 0.12,
+            "pyrolysis_c": 900,
+            "r_squared": 0.83,
+            "source_cell": "0.66 \u00b1 0.12",
+            "source_table_row": 2,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 30,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": 0.62,
+            "pmax_se_mg_p_per_g_biochar": 0.06,
+            "pyrolysis_c": 900,
+            "r_squared": 0.96,
+            "source_cell": "0.62 \u00b1 0.06",
+            "source_table_row": 10,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          }
+        ],
+        "meta": {
+          "confidence": 0.9131303046323874,
+          "curvature": 0.09513395287278857,
+          "lambda_budget": 0.9977537381011353,
+          "count": 17,
+          "total": 17,
+          "offset": 0,
+          "limit": 1000,
+          "next_offset": 17,
+          "truncated": false,
+          "engine_cap_hit": false
+        }
+      }
+    },
+    {
+      "path": "/v1/bundles/biochar_capture_paper_v1/query",
+      "request": {
+        "conditions": [
+          {
+            "field": "r_squared",
+            "op": "gt",
+            "value": 0.8
+          }
+        ],
+        "sort": [
+          {
+            "field": "pmax_mg_p_per_g_biochar",
+            "desc": true
+          }
+        ],
+        "limit": 1000
+      },
+      "status": 200,
+      "response": {
+        "data": [
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 24,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 10.35,
+            "pmax_se_mg_p_per_g_biochar": 1.45,
+            "pyrolysis_c": 900,
+            "r_squared": 0.9,
+            "source_cell": "10.35 \u00b1 1.45",
+            "source_table_row": 8,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 10,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 8.55,
+            "pmax_se_mg_p_per_g_biochar": 0.97,
+            "pyrolysis_c": 500,
+            "r_squared": 0.94,
+            "source_cell": "8.55 \u00b1 0.97",
+            "source_table_row": 4,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 23,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 7.43,
+            "pmax_se_mg_p_per_g_biochar": 0.83,
+            "pyrolysis_c": 700,
+            "r_squared": 0.94,
+            "source_cell": "7.43 \u00b1 0.83",
+            "source_table_row": 8,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 11,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 7.41,
+            "pmax_se_mg_p_per_g_biochar": 0.23,
+            "pyrolysis_c": 700,
+            "r_squared": 1.0,
+            "source_cell": "7.41 \u00b1 0.23",
+            "source_table_row": 4,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 22,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 6.32,
+            "pmax_se_mg_p_per_g_biochar": 0.32,
+            "pyrolysis_c": 500,
+            "r_squared": 0.99,
+            "source_cell": "6.32 \u00b1 0.32",
+            "source_table_row": 8,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 36,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 5.41,
+            "pmax_se_mg_p_per_g_biochar": 1.85,
+            "pyrolysis_c": 900,
+            "r_squared": 0.96,
+            "source_cell": "5.41 \u00b1 1.85",
+            "source_table_row": 12,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 21,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 5.33,
+            "pmax_se_mg_p_per_g_biochar": 0.6,
+            "pyrolysis_c": 900,
+            "r_squared": 0.94,
+            "source_cell": "5.33 \u00b1 0.60",
+            "source_table_row": 7,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 34,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 4.9,
+            "pmax_se_mg_p_per_g_biochar": 0.61,
+            "pyrolysis_c": 500,
+            "r_squared": 0.92,
+            "source_cell": "4.90 \u00b1 0.61",
+            "source_table_row": 12,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 33,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 4.25,
+            "pmax_se_mg_p_per_g_biochar": 0.21,
+            "pyrolysis_c": 900,
+            "r_squared": 0.85,
+            "source_cell": "4.25 \u00b1 0.21",
+            "source_table_row": 11,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 5,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": 4.1,
+            "pmax_se_mg_p_per_g_biochar": 0.17,
+            "pyrolysis_c": 700,
+            "r_squared": 0.92,
+            "source_cell": "4.10 \u00b1 0.17",
+            "source_table_row": 2,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 35,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 2.84,
+            "pmax_se_mg_p_per_g_biochar": 0.4,
+            "pyrolysis_c": 700,
+            "r_squared": 0.9,
+            "source_cell": "2.84 \u00b1 0.40",
+            "source_table_row": 12,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 12,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 2.6,
+            "pmax_se_mg_p_per_g_biochar": 0.25,
+            "pyrolysis_c": 900,
+            "r_squared": 0.96,
+            "source_cell": "2.60 \u00b1 0.25",
+            "source_table_row": 4,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 8,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 2.39,
+            "pmax_se_mg_p_per_g_biochar": 0.29,
+            "pyrolysis_c": 700,
+            "r_squared": 0.93,
+            "source_cell": "2.39 \u00b1 0.29",
+            "source_table_row": 3,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 9,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 1.67,
+            "pmax_se_mg_p_per_g_biochar": 0.22,
+            "pyrolysis_c": 900,
+            "r_squared": 0.91,
+            "source_cell": "1.67 \u00b1 0.22",
+            "source_table_row": 3,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 6,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": 0.66,
+            "pmax_se_mg_p_per_g_biochar": 0.12,
+            "pyrolysis_c": 900,
+            "r_squared": 0.83,
+            "source_cell": "0.66 \u00b1 0.12",
+            "source_table_row": 2,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 30,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": 0.62,
+            "pmax_se_mg_p_per_g_biochar": 0.06,
+            "pyrolysis_c": 900,
+            "r_squared": 0.96,
+            "source_cell": "0.62 \u00b1 0.06",
+            "source_table_row": 10,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          }
+        ],
+        "meta": {
+          "confidence": 0.9131303046323874,
+          "curvature": 0.09513395287278857,
+          "lambda_budget": 0.9977537381011353,
+          "count": 16,
+          "total": 16,
+          "offset": 0,
+          "limit": 1000,
+          "next_offset": 16,
+          "truncated": false,
+          "engine_cap_hit": false
+        }
+      }
+    },
+    {
+      "path": "/v1/bundles/biochar_capture_paper_v1/query",
+      "request": {
+        "conditions": [
+          {
+            "field": "r_squared",
+            "op": "gt",
+            "value": 0.85
+          }
+        ],
+        "sort": [
+          {
+            "field": "pmax_mg_p_per_g_biochar",
+            "desc": true
+          }
+        ],
+        "limit": 1000
+      },
+      "status": 200,
+      "response": {
+        "data": [
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 24,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 10.35,
+            "pmax_se_mg_p_per_g_biochar": 1.45,
+            "pyrolysis_c": 900,
+            "r_squared": 0.9,
+            "source_cell": "10.35 \u00b1 1.45",
+            "source_table_row": 8,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 10,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 8.55,
+            "pmax_se_mg_p_per_g_biochar": 0.97,
+            "pyrolysis_c": 500,
+            "r_squared": 0.94,
+            "source_cell": "8.55 \u00b1 0.97",
+            "source_table_row": 4,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 23,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 7.43,
+            "pmax_se_mg_p_per_g_biochar": 0.83,
+            "pyrolysis_c": 700,
+            "r_squared": 0.94,
+            "source_cell": "7.43 \u00b1 0.83",
+            "source_table_row": 8,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 11,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 7.41,
+            "pmax_se_mg_p_per_g_biochar": 0.23,
+            "pyrolysis_c": 700,
+            "r_squared": 1.0,
+            "source_cell": "7.41 \u00b1 0.23",
+            "source_table_row": 4,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 22,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 6.32,
+            "pmax_se_mg_p_per_g_biochar": 0.32,
+            "pyrolysis_c": 500,
+            "r_squared": 0.99,
+            "source_cell": "6.32 \u00b1 0.32",
+            "source_table_row": 8,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 36,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 5.41,
+            "pmax_se_mg_p_per_g_biochar": 1.85,
+            "pyrolysis_c": 900,
+            "r_squared": 0.96,
+            "source_cell": "5.41 \u00b1 1.85",
+            "source_table_row": 12,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 21,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 5.33,
+            "pmax_se_mg_p_per_g_biochar": 0.6,
+            "pyrolysis_c": 900,
+            "r_squared": 0.94,
+            "source_cell": "5.33 \u00b1 0.60",
+            "source_table_row": 7,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 34,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 4.9,
+            "pmax_se_mg_p_per_g_biochar": 0.61,
+            "pyrolysis_c": 500,
+            "r_squared": 0.92,
+            "source_cell": "4.90 \u00b1 0.61",
+            "source_table_row": 12,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 5,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": 4.1,
+            "pmax_se_mg_p_per_g_biochar": 0.17,
+            "pyrolysis_c": 700,
+            "r_squared": 0.92,
+            "source_cell": "4.10 \u00b1 0.17",
+            "source_table_row": 2,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 35,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 2.84,
+            "pmax_se_mg_p_per_g_biochar": 0.4,
+            "pyrolysis_c": 700,
+            "r_squared": 0.9,
+            "source_cell": "2.84 \u00b1 0.40",
+            "source_table_row": 12,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 12,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 2.6,
+            "pmax_se_mg_p_per_g_biochar": 0.25,
+            "pyrolysis_c": 900,
+            "r_squared": 0.96,
+            "source_cell": "2.60 \u00b1 0.25",
+            "source_table_row": 4,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 8,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 2.39,
+            "pmax_se_mg_p_per_g_biochar": 0.29,
+            "pyrolysis_c": 700,
+            "r_squared": 0.93,
+            "source_cell": "2.39 \u00b1 0.29",
+            "source_table_row": 3,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 9,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 1.67,
+            "pmax_se_mg_p_per_g_biochar": 0.22,
+            "pyrolysis_c": 900,
+            "r_squared": 0.91,
+            "source_cell": "1.67 \u00b1 0.22",
+            "source_table_row": 3,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 30,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": 0.62,
+            "pmax_se_mg_p_per_g_biochar": 0.06,
+            "pyrolysis_c": 900,
+            "r_squared": 0.96,
+            "source_cell": "0.62 \u00b1 0.06",
+            "source_table_row": 10,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          }
+        ],
+        "meta": {
+          "confidence": 0.9131303046323874,
+          "curvature": 0.09513395287278857,
+          "lambda_budget": 0.9977537381011353,
+          "count": 14,
+          "total": 14,
+          "offset": 0,
+          "limit": 1000,
+          "next_offset": 14,
+          "truncated": false,
+          "engine_cap_hit": false
+        }
+      }
+    },
+    {
+      "path": "/v1/bundles/biochar_capture_paper_v1/query",
+      "request": {
+        "conditions": [
+          {
+            "field": "r_squared",
+            "op": "gt",
+            "value": 0.9
+          }
+        ],
+        "sort": [
+          {
+            "field": "pmax_mg_p_per_g_biochar",
+            "desc": true
+          }
+        ],
+        "limit": 1000
+      },
+      "status": 200,
+      "response": {
+        "data": [
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 10,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 8.55,
+            "pmax_se_mg_p_per_g_biochar": 0.97,
+            "pyrolysis_c": 500,
+            "r_squared": 0.94,
+            "source_cell": "8.55 \u00b1 0.97",
+            "source_table_row": 4,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 23,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 7.43,
+            "pmax_se_mg_p_per_g_biochar": 0.83,
+            "pyrolysis_c": 700,
+            "r_squared": 0.94,
+            "source_cell": "7.43 \u00b1 0.83",
+            "source_table_row": 8,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 11,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 7.41,
+            "pmax_se_mg_p_per_g_biochar": 0.23,
+            "pyrolysis_c": 700,
+            "r_squared": 1.0,
+            "source_cell": "7.41 \u00b1 0.23",
+            "source_table_row": 4,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 22,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 6.32,
+            "pmax_se_mg_p_per_g_biochar": 0.32,
+            "pyrolysis_c": 500,
+            "r_squared": 0.99,
+            "source_cell": "6.32 \u00b1 0.32",
+            "source_table_row": 8,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 36,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 5.41,
+            "pmax_se_mg_p_per_g_biochar": 1.85,
+            "pyrolysis_c": 900,
+            "r_squared": 0.96,
+            "source_cell": "5.41 \u00b1 1.85",
+            "source_table_row": 12,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 21,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 5.33,
+            "pmax_se_mg_p_per_g_biochar": 0.6,
+            "pyrolysis_c": 900,
+            "r_squared": 0.94,
+            "source_cell": "5.33 \u00b1 0.60",
+            "source_table_row": 7,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 34,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 4.9,
+            "pmax_se_mg_p_per_g_biochar": 0.61,
+            "pyrolysis_c": 500,
+            "r_squared": 0.92,
+            "source_cell": "4.90 \u00b1 0.61",
+            "source_table_row": 12,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 5,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": 4.1,
+            "pmax_se_mg_p_per_g_biochar": 0.17,
+            "pyrolysis_c": 700,
+            "r_squared": 0.92,
+            "source_cell": "4.10 \u00b1 0.17",
+            "source_table_row": 2,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 12,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 2.6,
+            "pmax_se_mg_p_per_g_biochar": 0.25,
+            "pyrolysis_c": 900,
+            "r_squared": 0.96,
+            "source_cell": "2.60 \u00b1 0.25",
+            "source_table_row": 4,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 8,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 2.39,
+            "pmax_se_mg_p_per_g_biochar": 0.29,
+            "pyrolysis_c": 700,
+            "r_squared": 0.93,
+            "source_cell": "2.39 \u00b1 0.29",
+            "source_table_row": 3,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 9,
+            "mg_activation_molar": 0.5,
+            "pmax_mg_p_per_g_biochar": 1.67,
+            "pmax_se_mg_p_per_g_biochar": 0.22,
+            "pyrolysis_c": 900,
+            "r_squared": 0.91,
+            "source_cell": "1.67 \u00b1 0.22",
+            "source_table_row": 3,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 30,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": 0.62,
+            "pmax_se_mg_p_per_g_biochar": 0.06,
+            "pyrolysis_c": 900,
+            "r_squared": 0.96,
+            "source_cell": "0.62 \u00b1 0.06",
+            "source_table_row": 10,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          }
+        ],
+        "meta": {
+          "confidence": 0.9131303046323874,
+          "curvature": 0.09513395287278857,
+          "lambda_budget": 0.9977537381011353,
+          "count": 12,
+          "total": 12,
+          "offset": 0,
+          "limit": 1000,
+          "next_offset": 12,
+          "truncated": false,
+          "engine_cap_hit": false
+        }
+      }
+    },
+    {
+      "path": "/v1/bundles/biochar_capture_paper_v1/query",
+      "request": {
+        "conditions": [
+          {
+            "field": "r_squared",
+            "op": "gt",
+            "value": 0.95
+          }
+        ],
+        "sort": [
+          {
+            "field": "pmax_mg_p_per_g_biochar",
+            "desc": true
+          }
+        ],
+        "limit": 1000
+      },
+      "status": 200,
+      "response": {
+        "data": [
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 11,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 7.41,
+            "pmax_se_mg_p_per_g_biochar": 0.23,
+            "pyrolysis_c": 700,
+            "r_squared": 1.0,
+            "source_cell": "7.41 \u00b1 0.23",
+            "source_table_row": 4,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL3",
+            "feedstock_age_years": "3-5",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 22,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 6.32,
+            "pmax_se_mg_p_per_g_biochar": 0.32,
+            "pyrolysis_c": 500,
+            "r_squared": 0.99,
+            "source_cell": "6.32 \u00b1 0.32",
+            "source_table_row": 8,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 36,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 5.41,
+            "pmax_se_mg_p_per_g_biochar": 1.85,
+            "pyrolysis_c": 900,
+            "r_squared": 0.96,
+            "source_cell": "5.41 \u00b1 1.85",
+            "source_table_row": 12,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL1",
+            "feedstock_age_years": "1",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 12,
+            "mg_activation_molar": 1.0,
+            "pmax_mg_p_per_g_biochar": 2.6,
+            "pmax_se_mg_p_per_g_biochar": 0.25,
+            "pyrolysis_c": 900,
+            "r_squared": 0.96,
+            "source_cell": "2.60 \u00b1 0.25",
+            "source_table_row": 4,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          },
+          {
+            "feedstock": "PL7",
+            "feedstock_age_years": "7-9",
+            "fit_screen": "passes R2 > 0.80 screen",
+            "id": 30,
+            "mg_activation_molar": 0.25,
+            "pmax_mg_p_per_g_biochar": 0.62,
+            "pmax_se_mg_p_per_g_biochar": 0.06,
+            "pyrolysis_c": 900,
+            "r_squared": 0.96,
+            "source_cell": "0.62 \u00b1 0.06",
+            "source_table_row": 10,
+            "source_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1"
+          }
+        ],
+        "meta": {
+          "confidence": 0.9131303046323874,
+          "curvature": 0.09513395287278857,
+          "lambda_budget": 0.9977537381011353,
+          "count": 5,
+          "total": 5,
+          "offset": 0,
+          "limit": 1000,
+          "next_offset": 5,
+          "truncated": false,
+          "engine_cap_hit": false
+        }
+      }
+    },
+    {
+      "path": "/v1/bundles/biochar_capture_paper_v1/aggregate",
+      "request": {
+        "group_by": "mg_activation_molar",
+        "field": "pmax_mg_p_per_g_biochar",
+        "conditions": [
+          {
+            "field": "r_squared",
+            "op": "gt",
+            "value": 0.8
+          },
+          {
+            "field": "mg_activation_molar",
+            "op": "eq",
+            "value": 0.25
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "groups": {
+          "0.25": {
+            "count": 3,
+            "sum": 5.38,
+            "avg": 1.7933333333333332,
+            "min": 0.62,
+            "max": 4.1
+          }
+        }
+      }
+    },
+    {
+      "path": "/v1/bundles/biochar_capture_paper_v1/aggregate",
+      "request": {
+        "group_by": "mg_activation_molar",
+        "field": "pmax_mg_p_per_g_biochar",
+        "conditions": [
+          {
+            "field": "r_squared",
+            "op": "gt",
+            "value": 0.8
+          },
+          {
+            "field": "mg_activation_molar",
+            "op": "eq",
+            "value": 0.5
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "groups": {
+          "0.5": {
+            "count": 4,
+            "sum": 13.64,
+            "avg": 3.41,
+            "min": 1.67,
+            "max": 5.33
+          }
+        }
+      }
+    },
+    {
+      "path": "/v1/bundles/biochar_capture_paper_v1/aggregate",
+      "request": {
+        "group_by": "mg_activation_molar",
+        "field": "pmax_mg_p_per_g_biochar",
+        "conditions": [
+          {
+            "field": "r_squared",
+            "op": "gt",
+            "value": 0.8
+          },
+          {
+            "field": "mg_activation_molar",
+            "op": "eq",
+            "value": 1.0
+          }
+        ]
+      },
+      "status": 200,
+      "response": {
+        "groups": {
+          "1": {
+            "count": 9,
+            "sum": 55.81,
+            "avg": 6.2011111111111115,
+            "min": 2.6,
+            "max": 10.35
+          }
+        }
+      }
+    }
+  ]
+}

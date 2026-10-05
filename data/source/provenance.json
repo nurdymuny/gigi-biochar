@@ -1,0 +1,16 @@
+{
+  "source_doi": "10.1007/s42773-023-00263-5",
+  "table_url": "https://link.springer.com/article/10.1007/s42773-023-00263-5/tables/1",
+  "raw_data_doi": "10.5061/dryad.pc866t1w7",
+  "prepared_utc": "2026-10-05T13:00:50.488416+00:00",
+  "license": "CC-BY-4.0",
+  "source_kind": "Published fitted summaries",
+  "excerpt_sha256": "e2fa57cbae6a15a565b76f891b3545e75606f847f174824058c91cc26d0e935e",
+  "original_page_sha256": "757621687aacccd760327e5bc06691a6a85122a88607dc72a6443f58d145fb7a",
+  "transformations": [
+    "Extract Table 1 and preserve explanatory footnote",
+    "Expand temperatures into formulation rows",
+    "Preserve NR as null; no imputation"
+  ],
+  "raw_workbook_status": "Initial direct download failed; subsequently supplied and archived unchanged in data/source/dryad. See its separate provenance.json."
+}

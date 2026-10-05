@@ -1,0 +1,15 @@
+{
+  "prepared_date": "2026-10-05",
+  "platform": "Windows x64",
+  "python": "3.12.10",
+  "analysis_dependencies": "Python standard library only",
+  "gigi_binary_name": "gigi-stream.exe",
+  "gigi_binary_sha256": "f4b5b1483f763c75d27d4cce87b7b394891115dcc21b16b87bfdbc39b2e693f1",
+  "gigi_source_revision_for_binary": null,
+  "gigi_revision_note": "The executable pre-existed this analysis. Its exact build-source revision was not verified; no source-commit equivalence is claimed.",
+  "latex": "MiKTeX pdfTeX 4.18 / MiKTeX 24.1, pdfLaTeX",
+  "latex_command": "pdflatex --disable-installer -interaction=nonstopmode -halt-on-error -output-directory=paper paper/manuscript.tex",
+  "pdf_inspection": "Poppler rendering and visual inspection; no byte-identical PDF requirement",
+  "builtin_editor_compilation": "Unavailable in this session: Unable to find standard directories for platform",
+  "scientific_scope": "Published fit-summary screening and descriptive extraction of archived isotherm observations; no model refitting or field validation"
+}

@@ -1,0 +1,12 @@
+{
+  "doi": "10.5061/dryad.pc866t1w7",
+  "version": "2023-10-10",
+  "obtained": "User-supplied copy of the public Dryad dataset archive",
+  "archive_sha256": "95d3e7cb1eb547182a5f7533bbc97cf9e3a7f18f63eae8bda4e8ba779bfa0d6f",
+  "files": {
+    "Compiled_Data.xlsx": "377c6841ee172e439df9038c2ab8cf41b166225ce1753d36b39da47ff36ba34e",
+    "README.md": "804b31cae8e41564a9c0a8e738de47c90794ea8c1fc73af5d4cb1bd5ae647fae"
+  },
+  "reuse": "CC0; Dryad dataset terms https://datadryad.org/terms",
+  "source_unchanged": true
+}
