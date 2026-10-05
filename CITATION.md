@@ -8,4 +8,8 @@ Raw-data record: Padilla et al. (2023). Digital research data from the same stud
 
 The secondary-analysis repository is [gigi-biochar](https://github.com/nurdymuny/gigi-biochar), maintained by Bee Rosa Davis. Cite the exact Git commit used for a reproduction. A repository commit is a software version, not a peer-reviewed publication or a dataset DOI.
 
-The manuscript's scholarly author list and affiliations have not been supplied. Commit authorship does not establish research authorship. Add verified author metadata before journal submission; no new publication status or DOI is claimed here.
+The research note's author is **Bee Rosa Davis**, as designated by the author. Suggested citation:
+
+Davis, B. R. (2026). *Fit Quality Screening of Biochar for Phosphorus Capture* [Research note for scientific discussion]. gigi-biochar. https://github.com/nurdymuny/gigi-biochar (specify the Git commit used).
+
+Affiliation, funding and competing-interest declarations remain to be supplied before journal submission. This is a research note, not a claim of peer-reviewed publication; no publication DOI is assigned here.

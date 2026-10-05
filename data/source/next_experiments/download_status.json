@@ -1,6 +1,7 @@
 {
   "checked_at_utc": "2026-10-05T13:37:03.542567+00:00",
   "scope": "Follow-up candidates; not added to the published Padilla analysis",
+  "status_scope": "Automated network attempt only; local_archive_provenance identifies separately acquired files.",
   "datasets": [
     {
       "id": "wang_2021_kinetics",
@@ -9,6 +10,7 @@
       "url": "https://datadryad.org/downloads/file_stream/672522",
       "purpose": "Kinetic and equilibrium comparisons across metal-loaded reed biochars; batch data, not a runoff trial.",
       "status": "not_downloaded",
+      "local_archive_provenance": "data/source/wang_2021/provenance.json",
       "reason": "HTTP Error 403: Forbidden"
     },
     {

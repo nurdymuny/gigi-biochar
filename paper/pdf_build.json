@@ -1,9 +1,9 @@
 {
   "source": "paper/manuscript.tex",
-  "source_sha256": "9667897214aa3bf95758764731171bf2d401a64d758b94c92268cc850becd9f8",
+  "source_sha256": "ca94a1cc1ea0b9708338f121a6f6eb79afbd173909f2af4b811906fb202685e8",
   "pdf": "paper/manuscript.pdf",
-  "pdf_sha256": "85093de497dabfe9f67b3b0481ec0719c18e7238700856d5e865e0045a3555eb",
+  "pdf_sha256": "efa90f7ce69cd1f4d3596f6f7e109590cb251e7a7abf3c9cbf3a0ba296d1fb7d",
   "builder_sha256": "e66f075977c0b3372b5d639ee53e02318c6d8f52aac9c2fc9be60ba49929f2f1",
-  "pages": 14,
+  "pages": 15,
   "method": "Three pdfLaTeX passes; exact source digest embedded during compilation; no unresolved references or overflow."
 }

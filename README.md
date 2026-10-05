@@ -338,6 +338,6 @@ Temporary servers, snapshots, credentials, dependency environments, rendering pr
 
 Repository maintainer: **Bee Rosa Davis**. Commits prepared here use **bee_davis@alumni.brown.edu** as author and committer, with no co-author trailers. Git authorship is distinct from a scholarly author list.
 
-The manuscript discloses AI-assisted preparation. Its research authors, affiliations, funding, and competing-interest declarations remain for the responsible researchers to supply before journal submission. It is a discussion draft. See [CITATION.md](CITATION.md); cite the original study and Dryad data, and identify the exact repository commit for reproductions.
+The manuscript names **Bee Rosa Davis** as author and discloses AI-assisted preparation. Affiliation, funding and competing-interest declarations remain to be supplied before journal submission. It is a discussion draft. See [CITATION.md](CITATION.md); cite the original study and Dryad data, and identify the exact repository commit for reproductions.
 
 Original code, tests, scripts and workflows use **PolyForm Noncommercial 1.0.0**. The original paper, documentation and figures use **CC BY-NC 4.0**, with attribution to Bee Rosa Davis. Published article/table material retains CC BY 4.0 attribution; Dryad data remain CC0. GIGI has its separate upstream terms. See [LICENSE](LICENSE), the full texts in [LICENSES](LICENSES), and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the precise scope. These licenses do not restrict reuse of underlying third-party measurements under their existing terms.

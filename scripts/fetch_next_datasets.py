@@ -19,6 +19,8 @@ def main():
     outcomes=[]
     for item in CANDIDATES:
         result=dict(item)
+        if item['id']=='wang_2021_kinetics' and (ROOT/'data/source/wang_2021/provenance.json').exists():
+            result['local_archive_provenance']='data/source/wang_2021/provenance.json'
         try:
             request=urllib.request.Request(item['url'],headers={'User-Agent':'gigi-biochar research reproduction','Accept':'application/octet-stream'})
             with urllib.request.urlopen(request,timeout=45) as response:body=response.read()
@@ -28,7 +30,7 @@ def main():
         except (urllib.error.HTTPError,urllib.error.URLError,ValueError,TimeoutError) as error:
             result.update(status='not_downloaded',reason=str(error))
         outcomes.append(result);print(item['id']+': '+result['status']+' '+result.get('reason',''))
-    manifest=dict(checked_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),scope='Follow-up candidates; not added to the published Padilla analysis',datasets=outcomes)
+    manifest=dict(checked_at_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),scope='Follow-up candidates; not added to the published Padilla analysis',status_scope='Automated network attempt only; local_archive_provenance identifies separately acquired files.',datasets=outcomes)
     (directory/'download_status.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf8',newline='\n')
 
 if __name__=='__main__':main()
