@@ -1,5 +1,21 @@
 # Biochar phosphorus capture with GIGI
 
+## TL;DR — the plain-English version
+
+Plants need phosphorus to grow, but too much of it washing into rivers and lakes can cause problems. Biochar is a charcoal-like material made from plant or animal waste. Researchers are studying whether it can catch phosphorus before it escapes into the water.
+
+**What did we find?** The biggest number on a lab-results sheet can be misleading. We checked published results for 36 biochar recipes. Only 16 had phosphorus-capture estimates that passed our chosen check against the measurements. Some biochars released phosphorus instead of catching it. In a separate study, the comparison also changed depending on how long the material stayed in contact with the water.
+
+**How did GIGI help?** Think of GIGI as an organized cabinet of lab results. Each result stays beside its recipe, source and notes about its limits. We used GIGI to find the results that met our checking rule, put them in order and compare groups. We then checked its answers against separate calculations.
+
+**The headline: GIGI helped turn scattered research results into a short list of biochars worth testing, with evidence people can check.** It made it easier to see why a recipe was included or left out. We chose the checking rule; GIGI applied it and kept the evidence organized.
+
+This is a fresh look at existing research, not a new lab experiment. It does **not** prove that any of these materials will reduce phosphorus runoff on a farm. That still needs testing with real water flowing through the material, including checking whether the captured phosphorus later washes back out.
+
+For the pictures and results, open the [paper](paper/manuscript.pdf). The instructions below explain how to repeat every calculation.
+
+## Research overview
+
 A reproducible secondary analysis of **36 published biochar formulations and 540 archived isotherm observations**, with a scientific LaTeX research note, technical drawings, complete source provenance, and verified database queries.
 
 **Question:** Which biochar capacity estimates warrant follow-up testing for phosphorus capture after accounting for weak model fits and phosphorus release?
