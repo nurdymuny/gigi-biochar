@@ -6,6 +6,8 @@ A reproducible secondary analysis of **36 published biochar formulations and 540
 
 This project analyzes Padilla et al. (2023) and its public Dryad workbook. It does not report new experiments, demonstrate reduced field runoff, establish a statistically optimal material, or refit the original isotherm models. The paper proposes a next experiment for testing runoff applications.
 
+A separate follow-up extracts **72 kinetic means with standard deviations** from Wang's 2021 Dryad dataset. See the [next-experiment plan](docs/NEXT_EXPERIMENT.md), [CSV](data/processed/wang_kinetics.csv), [summary](results/wang_summary.json), and [live GIGI receipts](results/wang_live_verification.json). These are not individual replicates and are not pooled into the Padilla paper.
+
 ## Read the results
 
 - [Scientific paper (PDF)](paper/manuscript.pdf) and [standalone LaTeX source](paper/manuscript.tex).
@@ -13,6 +15,7 @@ This project analyzes Padilla et al. (2023) and its public Dryad workbook. It do
 - [Data dictionary](data/README.md), [screening summary](results/summary.json), and [measurement summary](results/isotherm_summary.json).
 - [Published-table provenance](data/source/provenance.json) and [Dryad workbook provenance](data/source/dryad/provenance.json).
 - [Live screening evidence](results/live_verification.json) and [live measurement evidence](results/isotherm_live_verification.json).
+- [Next experiment and public-data acquisition plan](docs/NEXT_EXPERIMENT.md), including the measurements needed to test capture and later release.
 
 The manuscript includes two original vector technical drawings: the fiber-bundle record organization and a proposed upflow-column experiment with sampling locations and phosphorus mass balance. Its other figures show reported capacity estimates with SE and all 540 signed sorption observations. All graphics are embedded as editable TikZ/PGFPlots code in the standalone source.
 
@@ -79,9 +82,10 @@ python --version
 python scripts/extract_table.py
 python scripts/analyze.py
 python scripts/import_dryad.py
+python scripts/import_wang.py
 python -m unittest discover -s tests -v
 python scripts/build_manuscript.py
-git diff --exit-code -- data/processed results/summary.json results/isotherm_summary.json paper/manuscript.tex
+git diff --exit-code -- data/processed results/summary.json results/isotherm_summary.json results/wang_summary.json paper/manuscript.tex
 ```
 
 Run each command successfully before continuing. In PowerShell, inspect `$LASTEXITCODE` if a command fails; separate commands do not automatically stop execution on a native-program error. In Unix shells, the last exit code is `$?`.
@@ -91,7 +95,7 @@ Expected results:
 1. Extraction reports 36 formulations and rewrites JSON and CSV from the archived table.
 2. Screening prints JSON with `formulations: 36`, `numeric_fits: 24`, `passing: 16`, `poor_fit: 8`, and `nr: 12`.
 3. Dryad extraction prints `observations: 540`, `formulations: 36`, `points_per_formulation: [15]`, and `negative_sorption: 171`.
-4. All **14 tests** pass.
+4. Wang extraction reports 72 summary records, six materials and 11 negative means; all **20 tests** pass.
 5. Manuscript generation prints `Built standalone manuscript.tex`.
 6. The final Git command exits 0 with no diff. It checks deterministic text outputs, not PDF byte identity or live database execution.
 
@@ -99,7 +103,7 @@ The archived workbook and original Dryad README are included unchanged, so routi
 
 ### Optional Python environment
 
-The core workflow needs no installed packages. `requirements.txt` supplies only optional `pypdf` for PDF inspection.
+The core workflow needs no installed packages. `requirements.txt` supplies `pypdf`, required only for PDF export and verification.
 
 Windows, without activation or execution-policy changes:
 
@@ -117,7 +121,7 @@ python3 -m venv .venv
 .venv/bin/python -m unittest discover -s tests -v
 ```
 
-Figures use LaTeX/PGFPlots, not matplotlib. Optional PDF-inspection package versions do not affect numerical results. Nothing needs installing to read the checked-in PDF.
+Figures use LaTeX/PGFPlots, not matplotlib. PDF package versions do not affect numerical results. Nothing needs installing to read the checked-in PDF.
 
 ## Reproduce the live GIGI checks
 
@@ -172,6 +176,7 @@ Open terminal B at the analysis repository root:
 ```sh
 python scripts/analyze.py --gigi-url http://127.0.0.1:3147
 python scripts/import_dryad.py --gigi-url http://127.0.0.1:3147
+python scripts/import_wang.py --gigi-url http://127.0.0.1:3147
 ```
 
 Use `127.0.0.1` locally: on Windows, `localhost` can resolve to IPv6 first and add delays. These operations need write permission and are not intended for GIGI's public read-only instance.
@@ -181,6 +186,8 @@ Use `127.0.0.1` locally: on Windows, `localhost` can resolve to IPv6 first and a
 | `biochar_capture_paper_v1` | 36 | Published fit summaries |
 | `biochar_capture_paper_gate_v1` | 2 | Explicitly synthetic test records |
 | `biochar_isotherms_v1` | 540 | Archived solution-concentration/sorbed-P pairs |
+| `biochar_wang_kinetic_summaries_v1` | 72 | Separate-study kinetic means and SD; unknown replicate counts kept null |
+| `biochar_wang_time_gate_v1` | 2 | Explicitly synthetic time-filter controls |
 
 Absent bundles are created. Matching existing records are reused. Mismatching records cause a failure; these scripts never overwrite or delete an existing differing bundle. For an incomplete bundle left by an interrupted import, restart with a fresh isolated data directory. Do not merge private lab records into these fixed reproduction bundles.
 
@@ -189,6 +196,8 @@ Absent bundles are created. Matching existing records are reused. Mismatching re
 The screening script checks a planted answer: a capacity of 9999 with R² 0.01 must lose to a capacity of 5 with R² 0.95 after filtering. Removing the fit filter must select 9999, demonstrating that the check detects the intended mechanism. It then verifies all 36 rows, complete rankings at five thresholds, and retained counts and means for the three nonempty activation groups against an independent Python reference.
 
 The measurement script verifies all 540 rows and every returned negative-sorption record against the independently extracted source. Text, identifiers, and nulls must match exactly; numeric fields use relative or absolute tolerance of 1e-12. Truncated reads and duplicate/excess records are not accepted as successful roundtrips.
+
+The Wang importer checks all 72 summary records and every selection at 12 measured times. A planted time-filter control must select the early record; removing the filter must select the larger late value. The all-null replicate-count field has an explicit integer schema. Time comparisons send float values to match the stored float field; this engine distinguishes integer and float equality.
 
 Live receipts include UTC time, the normalized-input SHA-256, and exact endpoint paths, request bodies, HTTP statuses, and returned values. They exclude authentication headers, server address, and inventories of unrelated bundles. They demonstrate these operations, not all engine features or a performance benchmark.
 
@@ -205,15 +214,26 @@ If source data or analytical rules change, regenerate data, summaries, and manus
 From the repository root, with an installed pdfLaTeX:
 
 ```sh
-pdflatex -interaction=nonstopmode -halt-on-error -output-directory=paper paper/manuscript.tex
-pdflatex -interaction=nonstopmode -halt-on-error -output-directory=paper paper/manuscript.tex
+python -m pip install -r requirements.txt
+python scripts/build_manuscript.py
+python scripts/build_pdf.py
+python scripts/check_pdf.py
 ```
 
-The second pass resolves references and table widths. Rerun if the log requests another pass. Output is `paper/manuscript.pdf`. Intermediate files are ignored. MiKTeX supports adding `--disable-installer` to prevent automatic package installation.
+The exporter makes three pdfLaTeX passes, rejects unresolved references and overflow diagnostics, and embeds the exact source SHA-256 in the PDF metadata. It writes `paper/manuscript.pdf` and `paper/pdf_build.json`, which records source, PDF and build-script hashes plus the page count. Commit both after reviewing an updated paper. Intermediate files are ignored. If pdfLaTeX is not on PATH, supply `--compiler` with its installed executable path. Install the required TeX packages before building; compiler package-manager behavior depends on your distribution.
+
+For an independent compilation and comparison, run:
+
+```sh
+python scripts/build_pdf.py --output-dir build/ci
+python scripts/check_pdf.py --compare build/ci/manuscript.pdf
+```
+
+The second command checks source binding, page count, and extracted text after normalizing whitespace and ligatures. It does not require identical PDF bytes across platforms. Changes to drawings also change the source digest and invalidate an old export. This is a stale-artifact guard, not a pixel comparison or a substitute for visual review. Different TeX versions may require review of a content or pagination mismatch. A direct editor compilation remains useful for previewing; use the export script for the committed PDF and its manifest.
 
 Packages: `geometry`, T1 `fontenc`, `lmodern`, `microtype`, `amsmath`, `booktabs`, `longtable`, `array`, `pgfplots` (compatibility 1.18), PGF/TikZ libraries `arrows.meta`, `patterns`, `positioning`, and `groupplots`, plus `hyperref` and `caption`. Use a distribution with these installed, or its usual package manager if one is missing.
 
-During preparation, the built-in document editor reported **“Unable to find standard directories for platform”** without a source-line diagnostic. The source was kept open, and the user authorized an installed local compiler for PDF export. A successful local export does not repair the editor's internal compiler. For ordinary LaTeX source errors, inspect the `.tex` line named in the log instead.
+For LaTeX source errors, inspect the source line named in the compiler log. Compiler startup failures should be resolved in the selected LaTeX environment before interpreting document diagnostics.
 
 PDF hashes can differ by compiler, platform, and timestamps. Reproduce the deterministic source and scientific content, then visually review all pages. Check for undefined references, clipped drawings, overlapping labels, figure axes, error bars, and the complete appendix. The technical apparatus drawing is a proposed measurement scheme, not a specification for manufacturing a treatment unit.
 
@@ -258,9 +278,9 @@ The table archiver extracts the first HTML table, so manually confirm it is stil
 
 ## Tests and continuous integration
 
-The **14 tests** check source-file hashes, all-cell extraction agreement, NR missingness, strict thresholds, known screening counts, sensitivity, the planted filter mechanism, rejection of incomplete/duplicate designs and excess roundtrip rows, all 540 workbook pairs, a known negative cell, and preservation of label anomalies.
+The **20 tests** check source-file hashes, all-cell extraction agreement, NR missingness, strict thresholds, known screening counts, sensitivity, the planted filter mechanism, rejection of incomplete/duplicate designs and excess roundtrip rows, all 540 workbook pairs, a known negative cell, preservation of label anomalies, all 72 Wang summaries with SD and null replicate counts, and the PDF source-binding guard. The latter accepts a matching fixture and rejects separately planted source, PDF, and embedded-digest changes.
 
-GitHub Actions runs these under Python 3.12, regenerates both data layers, both summaries, and the manuscript, and fails on unexpected diffs. It does not start GIGI or compile LaTeX. Live execution and PDF review are separate checks. There are no random samples or random seeds in this descriptive analysis.
+GitHub Actions is configured to run these under Python 3.12 on Ubuntu 24.04, regenerate both data layers, both summaries, and the manuscript, and fail on unexpected diffs. It then checks the committed PDF manifest, installs TeX Live, compiles a fresh PDF, compares its content with the committed export, and uploads the verified compilation as an artifact. It does not start GIGI. Live execution and visual PDF review remain separate checks. A workflow definition is not evidence that a hosted run succeeded; inspect the status of the exact commit. There are no random samples or random seeds in this descriptive analysis.
 
 ## Troubleshooting
 
@@ -279,7 +299,8 @@ GitHub Actions runs these under Python 3.12, regenerates both data layers, both 
 | Windows build cannot replace binary | Stop your own engine instance, rebuild, and check binary timestamp. |
 | `@@...@@` in LaTeX | Generate and compile `manuscript.tex`, not the template. |
 | Undefined references after first pass | Compile again, then inspect the log. |
-| Built-in compiler platform-directory error | The observed internal compiler could not initialize; preserve source and use a working local export environment. |
+| PDF build manifest mismatch | Regenerate the manuscript, export with `build_pdf.py`, visually review, then commit the source, PDF and manifest together. |
+| Independent PDF text/page count differs | Inspect both renders and TeX versions; do not remove the comparison merely to pass CI. |
 | Git diff after reproduction | Review it: live receipt changes are expected; deterministic data/summary/source changes are not expected for the same revision. |
 
 ## Repository map
@@ -295,6 +316,10 @@ GitHub Actions runs these under Python 3.12, regenerates both data layers, both 
 | `scripts/analyze.py` | Fit screening and optional live GIGI verification |
 | `scripts/import_dryad.py` | Workbook normalization and optional live verification |
 | `scripts/build_manuscript.py` | Data + prose template -> standalone LaTeX |
+| `scripts/build_pdf.py`, `scripts/check_pdf.py` | Export, source binding, and independent PDF comparison |
+| `paper/pdf_build.json` | Hashes connecting the source, builder and published PDF |
+| `docs/NEXT_EXPERIMENT.md` | Proposed column experiment, public-data inventory and acquisition limits |
+| `scripts/fetch_next_datasets.py` | Optional downloads of follow-up workbooks; outside the current analysis |
 | `results/` | Deterministic summaries, live receipts, preparation environment |
 | `paper/` | Template, standalone source, exported PDF |
 | `tests/` | Offline verification suite |
@@ -308,4 +333,4 @@ Repository maintainer: **Bee Rosa Davis**. Commits prepared here use **bee_davis
 
 The manuscript discloses AI-assisted preparation. Its research authors, affiliations, funding, and competing-interest declarations remain for the responsible researchers to supply before journal submission. It is a discussion draft. See [CITATION.md](CITATION.md); cite the original study and Dryad data, and identify the exact repository commit for reproductions.
 
-Published article/table material retains CC BY 4.0 attribution. Dryad data are supplied under CC0. GIGI has separate upstream licensing. No license has yet been selected for newly authored code and manuscript; a public repository alone does not grant blanket reuse rights. See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Original code, tests, scripts and workflows use **PolyForm Noncommercial 1.0.0**. The original paper, documentation and figures use **CC BY-NC 4.0**, with attribution to Bee Rosa Davis. Published article/table material retains CC BY 4.0 attribution; Dryad data remain CC0. GIGI has its separate upstream terms. See [LICENSE](LICENSE), the full texts in [LICENSES](LICENSES), and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the precise scope. These licenses do not restrict reuse of underlying third-party measurements under their existing terms.

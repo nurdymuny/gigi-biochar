@@ -2,7 +2,7 @@ name: Verify analysis
 on: [push, pull_request]
 jobs:
   offline:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -12,5 +12,18 @@ jobs:
       - run: python scripts/extract_table.py
       - run: python scripts/analyze.py
       - run: python scripts/import_dryad.py
+      - run: python scripts/import_wang.py
       - run: python scripts/build_manuscript.py
-      - run: git diff --exit-code -- data/processed results/summary.json results/isotherm_summary.json paper/manuscript.tex
+      - run: git diff --exit-code -- data/processed results/summary.json results/isotherm_summary.json results/wang_summary.json paper/manuscript.tex
+      - run: python -m pip install -r requirements.txt
+      - run: python scripts/check_pdf.py
+      - name: Install PDF build dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends texlive-latex-extra texlive-fonts-recommended texlive-pictures lmodern
+      - run: python scripts/build_pdf.py --output-dir build/ci
+      - run: python scripts/check_pdf.py --compare build/ci/manuscript.pdf
+      - uses: actions/upload-artifact@v4
+        with:
+          name: verified-manuscript
+          path: build/ci/manuscript.pdf

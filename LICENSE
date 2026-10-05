@@ -1,0 +1,24 @@
+Copyright (c) 2026 Bee Rosa Davis
+
+This repository contains materials under different licenses:
+
+1. Original analysis software, tests, build scripts and workflow configuration
+   are licensed under the PolyForm Noncommercial License 1.0.0.
+   Full terms: LICENSES/PolyForm-Noncommercial-1.0.0.txt
+
+   Required Notice: Copyright (c) 2026 Bee Rosa Davis.
+
+2. Original manuscript text, documentation and original figures, including
+   their LaTeX/TikZ source, are licensed under Creative Commons
+   Attribution-NonCommercial 4.0 International (CC BY-NC 4.0).
+   Full terms: LICENSES/CC-BY-NC-4.0.txt
+   Attribution: Bee Rosa Davis, gigi-biochar,
+   https://github.com/nurdymuny/gigi-biochar
+
+3. Third-party data and source material retain their own terms. In particular,
+   the Padilla et al. article/table is CC BY 4.0 and Dryad data are CC0.
+   These noncommercial licenses do not restrict the underlying third-party
+   measurements, facts, or rights already available under those source terms.
+   See THIRD_PARTY_NOTICES.md and the per-source provenance manifests.
+
+GIGI is a separate dependency and is not relicensed by this repository.

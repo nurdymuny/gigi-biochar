@@ -54,3 +54,21 @@ The current parser deliberately validates this table's exact 12-row layout rathe
 The exact source sheet is `Figure 5 and Sup. Fig. S5`. Its nine header blocks contain four activation conditions each, and each condition has 15 numeric pairs. Concentration conditions and replicate identities are not reconstructed from position alone. No fitting or imputation occurs. Counts by activation pool materials and concentration conditions and cannot be interpreted as independent experimental success probabilities.
 
 Other workbook sheets are archived but not quantitatively analyzed here. Two contain PL9 labels (`Figure 1 and Sup. Fig. S2` and `Proximate Analysis`), which are flagged rather than mapped silently to PL7. The workbook's general notes also give a mismatched isotherm tab name. Source labels, units, signs, and location references are retained to support a reviewed future analysis.
+
+## Separate Wang kinetic summaries
+
+`wang_kinetics.json` and `.csv` contain 72 means with source SD from `source/wang_2021/PO4-P_adsorption_kinetis_and_isotherms_raw_data.xlsx`, Dryad DOI 10.5061/dryad.3xsj3txf4, version 22 April 2021. These belong to a different study and are not joined to Padilla formulation IDs or included in the manuscript's results.
+
+| Field | Meaning |
+|---|---|
+| `id`, `study_id` | Local record ID and explicit study identifier |
+| `material` | Source label: Al-BC, Ca-BC, Fe-BC, La-BC, Mg-BC or unmodified BC |
+| `time_h` | Measured sampling time, hours; 0.5–72 |
+| `q_mean_mg_g` | Reported mean Q, retaining the sheet's mg/g unit under PO4-P |
+| `q_sd_mg_g` | Reported standard deviation, same units; not SE or a confidence interval |
+| `replicate_n` | Null because replicate count is not given in the workbook; blank in CSV |
+| `uncertainty_type`, `observation_type` | Explicit labels distinguishing SD and summary means from individual observations |
+| `source_sheet` | `PO4-P adsorption kinetics` |
+| `source_time_cell`, `source_mean_cell`, `source_sd_cell` | Exact Excel addresses for each value |
+
+No conversion of phosphate mass to elemental phosphorus mass is applied. The archived isotherm sheet labels Qe in mg/L rather than mg/g; its 60 summaries are not normalized pending unit review. Do not use its source column name as evidence that the dimensional discrepancy is resolved. Other members of the supplied ZIP are inventoried in provenance but not extracted or analyzed.

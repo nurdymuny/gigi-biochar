@@ -9,6 +9,10 @@
 \usepgfplotslibrary{groupplots}
 \pgfplotsset{compat=1.18}
 \usepackage[hidelinks]{hyperref}
+% The export script supplies this digest to bind a PDF to its exact source.
+\ifdefined\ManuscriptSourceSHA
+\hypersetup{pdfsubject={Manuscript source SHA256: \ManuscriptSourceSHA}}
+\fi
 \usepackage{caption}
 \captionsetup{font=small,labelfont=bf}
 \setlength{\parindent}{0pt}
@@ -176,7 +180,7 @@ Cutoff & Retained & At 1 M & Leading feedstock, $^\circ$C & Capacity (mg P/g)\\
 \end{tabular}
 \end{table}
 
-\subsection{Additional evidence from the archived isotherm measurements}
+\subsection{Descriptive analysis of the underlying isotherm measurements}
 The supplied workbook contains 540 paired observations across the same 36 formulations. Of these, 171 have negative sorbed-P values. Grouped descriptively by activation concentration, the counts are 93/135 at 0~M, 52/135 at 0.25~M, 26/135 at 0.5~M and 0/135 at 1~M. Every recorded 1~M point in this sheet is positive, ranging from 1.47 to 13.47~mg~P/g. These denominators count observations over different concentrations and materials, not independent studies. They do not estimate the probability of success in runoff or establish a causal dose response.
 
 Figure~\ref{fig:raw} preserves the signed measurements and their solution-concentration coordinates. A formulation can show uptake at some conditions and release at others, so the sign of an individual observation and a formulation-level NR label answer different questions. The numerical values were loaded into a separate GIGI bundle, fully checked against the source-derived reference, and queried for negative sorption; all 171 returned records matched. No summary fit was replaced by an ad hoc fit to these points.
@@ -276,6 +280,8 @@ Keeping fit diagnostics and missing-result labels alongside capacity estimates m
 The accompanying repository, \url{https://github.com/nurdymuny/gigi-biochar}, contains an attributed source-table excerpt, the unchanged Dryad workbook and README, SHA-256 provenance records, both normalized datasets in JSON and CSV, deterministic analysis, automated tests, exact live GIGI receipts and this standalone LaTeX manuscript. Technical drawings and plotted data are embedded as vector LaTeX graphics. The engine is obtained separately from its upstream repository~\cite{gigi}; this analysis does not redistribute or relicense it. Published source data retain their original attribution and reuse terms.
 
 \section*{Preparation and authorship}
+Original text and figures: copyright \copyright~2026 Bee Rosa Davis, licensed under \href{https://creativecommons.org/licenses/by-nc/4.0/}{CC BY-NC 4.0}. Analysis code is licensed separately under PolyForm Noncommercial 1.0.0. Third-party source data retain their original terms.
+
 This research note was prepared with AI assistance for scientific discussion. No new laboratory work was conducted. Authorship, affiliations, funding and competing-interest declarations should be supplied and verified by the responsible researchers before any journal submission or public scholarly release. The computational checks do not replace scientific review of the source data and interpretation.
 
 \begin{thebibliography}{9}

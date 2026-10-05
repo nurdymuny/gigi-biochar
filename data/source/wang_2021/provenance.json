@@ -1,0 +1,19 @@
+{
+  "doi": "10.5061/dryad.3xsj3txf4",
+  "version": "2021-04-22",
+  "obtained": "User-supplied public Dryad ZIP; kinetic/isotherm workbook preserved unchanged",
+  "archive_sha256": "02e1ac23e2f378eae6827b7d83ea77d29280227b898a76856e01e3c71faecadb",
+  "archive_inventory_bytes": {
+    "N2_adsorption-desorption_for_BET_analysis.xlsx": 13120,
+    "XRD_data.rar": 179576,
+    "PO4-P_adsorption_kinetis_and_isotherms_raw_data.xlsx": 14948,
+    "FTIR_data.rar": 643450
+  },
+  "files": {
+    "PO4-P_adsorption_kinetis_and_isotherms_raw_data.xlsx": "20d51cd8173239ea4c619ab991ab2d92d63f7d7ecd8e48f8a7f6219ec51ff79a"
+  },
+  "license": "CC0",
+  "dataset_url": "https://datadryad.org/dataset/doi:10.5061/dryad.3xsj3txf4",
+  "source_unchanged": true,
+  "other_archive_members": "Inventoried, not extracted or analyzed"
+}

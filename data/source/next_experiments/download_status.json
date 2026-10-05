@@ -1,0 +1,24 @@
+{
+  "checked_at_utc": "2026-10-05T13:37:03.542567+00:00",
+  "scope": "Follow-up candidates; not added to the published Padilla analysis",
+  "datasets": [
+    {
+      "id": "wang_2021_kinetics",
+      "doi": "10.5061/dryad.3xsj3txf4",
+      "file": "PO4-P_adsorption_kinetis_and_isotherms_raw_data.xlsx",
+      "url": "https://datadryad.org/downloads/file_stream/672522",
+      "purpose": "Kinetic and equilibrium comparisons across metal-loaded reed biochars; batch data, not a runoff trial.",
+      "status": "not_downloaded",
+      "reason": "HTTP Error 403: Forbidden"
+    },
+    {
+      "id": "dharmakeerthi_2020_flooding",
+      "doi": "10.5061/dryad.bv10m57",
+      "file": "Dharmakeerthi_Datadryad.xlsx",
+      "url": "https://datadryad.org/downloads/file_stream/469737",
+      "purpose": "Repeated pore-water and floodwater chemistry under cold and warm flooding; release risk, not column breakthrough.",
+      "status": "not_downloaded",
+      "reason": "HTTP Error 403: Forbidden"
+    }
+  ]
+}

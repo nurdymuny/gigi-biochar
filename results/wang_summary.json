@@ -1,0 +1,60 @@
+{
+  "summary_records": 72,
+  "materials": 6,
+  "times_h": [
+    0.5,
+    1,
+    1.5,
+    2,
+    3,
+    4,
+    6,
+    8,
+    12,
+    24,
+    48,
+    72
+  ],
+  "negative_means": 11,
+  "at_30_minutes": [
+    {
+      "material": "Al-BC",
+      "q_mean_mg_g": 1.81,
+      "q_sd_mg_g": 0.3
+    },
+    {
+      "material": "Ca-BC",
+      "q_mean_mg_g": 6.83,
+      "q_sd_mg_g": 0.29
+    },
+    {
+      "material": "Fe-BC",
+      "q_mean_mg_g": 5.87,
+      "q_sd_mg_g": 0.45
+    },
+    {
+      "material": "La-BC",
+      "q_mean_mg_g": 9.82,
+      "q_sd_mg_g": 0.04
+    },
+    {
+      "material": "Mg-BC",
+      "q_mean_mg_g": 1.51,
+      "q_sd_mg_g": 0.02
+    },
+    {
+      "material": "BC",
+      "q_mean_mg_g": -0.33,
+      "q_sd_mg_g": 0.06
+    }
+  ],
+  "notes": [
+    "Means and standard deviations, not individual replicate measurements.",
+    "Replicate count is not specified in the workbook; no count or SE is inferred.",
+    "The kinetics header reports mg/g under PO4-P; original units are preserved without conversion.",
+    "Thirty minutes is the earliest measured time. No performance before that time is inferred.",
+    "Negative means are preserved as signed observations.",
+    "Isotherm Qe headers report mg/L, unlike kinetic Q mg/g. Isotherms remain archived pending unit review.",
+    "No new model fits, significance tests, equilibrium claims, or cross-study material ranking."
+  ]
+}

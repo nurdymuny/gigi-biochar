@@ -82,7 +82,7 @@ class Gigi:
         # Headers, credentials, base URL and unrelated server logs are not persisted.
         self.receipts.append(dict(path=path,request=body,status=status,response=result))
         return result
-    def load(self,name,rows):
+    def load(self,name,rows,field_types=None):
         items=self.call('/v1/bundles')
         if isinstance(items,dict): items=items['data']
         # Do not retain an inventory of unrelated bundles in the public receipt.
@@ -92,7 +92,8 @@ class Gigi:
             if response.get('meta',{}).get('truncated'): raise ValueError('Truncated bundle read')
             equivalent(response['data'],rows)
             return
-        fields={}
+        # Explicit types are needed for columns whose observed values are all null.
+        fields=dict(field_types or {})
         for row in rows:
             for k,v in row.items():
                 if v is not None: fields[k]='integer' if isinstance(v,int) else 'float' if isinstance(v,float) else 'text'

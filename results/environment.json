@@ -8,8 +8,7 @@
   "gigi_source_revision_for_binary": null,
   "gigi_revision_note": "The executable pre-existed this analysis. Its exact build-source revision was not verified; no source-commit equivalence is claimed.",
   "latex": "MiKTeX pdfTeX 4.18 / MiKTeX 24.1, pdfLaTeX",
-  "latex_command": "pdflatex --disable-installer -interaction=nonstopmode -halt-on-error -output-directory=paper paper/manuscript.tex",
-  "pdf_inspection": "Poppler rendering and visual inspection; no byte-identical PDF requirement",
-  "builtin_editor_compilation": "Unavailable in this session: Unable to find standard directories for platform",
+  "latex_command": "python scripts/build_pdf.py",
+  "pdf_inspection": "Source/PDF hash binding, independent local compilation and content comparison, Poppler rendering and visual inspection; no byte-identical PDF requirement",
   "scientific_scope": "Published fit-summary screening and descriptive extraction of archived isotherm observations; no model refitting or field validation"
 }
