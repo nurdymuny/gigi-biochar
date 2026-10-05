@@ -13,8 +13,9 @@ jobs:
       - run: python scripts/analyze.py
       - run: python scripts/import_dryad.py
       - run: python scripts/import_wang.py
+      - run: python scripts/kinetic_experiment.py
       - run: python scripts/build_manuscript.py
-      - run: git diff --exit-code -- data/processed results/summary.json results/isotherm_summary.json results/wang_summary.json paper/manuscript.tex
+      - run: git diff --exit-code -- data/processed results/summary.json results/isotherm_summary.json results/wang_summary.json results/kinetic_experiment.json results/kinetic_target_windows.csv docs/KINETIC_EXPERIMENT.md paper/manuscript.tex
       - run: python -m pip install -r requirements.txt
       - run: python scripts/check_pdf.py
       - name: Install PDF build dependencies

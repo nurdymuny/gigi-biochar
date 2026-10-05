@@ -57,7 +57,7 @@ Other workbook sheets are archived but not quantitatively analyzed here. Two con
 
 ## Separate Wang kinetic summaries
 
-`wang_kinetics.json` and `.csv` contain 72 means with source SD from `source/wang_2021/PO4-P_adsorption_kinetis_and_isotherms_raw_data.xlsx`, Dryad DOI 10.5061/dryad.3xsj3txf4, version 22 April 2021. These belong to a different study and are not joined to Padilla formulation IDs or included in the manuscript's results.
+`wang_kinetics.json` and `.csv` contain 72 means with source SD from `source/wang_2021/PO4-P_adsorption_kinetis_and_isotherms_raw_data.xlsx`, Dryad DOI 10.5061/dryad.3xsj3txf4, version 22 April 2021. These belong to a different study and are not joined to Padilla formulation IDs. The separate contact-time analysis appears in Appendix B and `docs/KINETIC_EXPERIMENT.md`.
 
 | Field | Meaning |
 |---|---|
@@ -72,3 +72,5 @@ Other workbook sheets are archived but not quantitatively analyzed here. Two con
 | `source_time_cell`, `source_mean_cell`, `source_sd_cell` | Exact Excel addresses for each value |
 
 No conversion of phosphate mass to elemental phosphorus mass is applied. The archived isotherm sheet labels Qe in mg/L rather than mg/g; its 60 summaries are not normalized pending unit review. Do not use its source column name as evidence that the dimensional discrepancy is resolved. Other members of the supplied ZIP are inventoried in provenance but not extracted or analyzed.
+
+The derived `results/kinetic_target_windows.csv` records `material`, the exploratory `target_mg_g`, and `sd_multiplier` (0, 1 or 2 applied as mean minus multiplier times SD). `first_sustained_sample_h` identifies the first sampled value meeting the target with all later sampled values also meeting it. `previous_sample_h` is the preceding grid time, not a fitted lower confidence bound. `status` distinguishes attainment at the first sample, later observed attainment and no sustained attainment by the final sample. Null times are blank CSV cells, not zero. A final-sample attainment has no later observation to test persistence. These are 54 descriptive scenarios, not 54 experiments or hypothesis tests.

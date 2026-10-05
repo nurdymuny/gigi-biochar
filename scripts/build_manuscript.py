@@ -35,6 +35,24 @@ def main():
         pairs='\n'.join(f"{r['solution_p_mg_l']:.12g} {r['sorbed_p_mg_g']:.12g}" for r in raw if r['mg_activation_molar']==mg)
         panels.append('\\nextgroupplot[title={'+f'{mg:g} M Mg'+'}]\n\\addplot[gray,dashed] coordinates {(0,0) (190,0)};\n\\addplot[only marks,mark=*,mark size=1.25pt,blue!55!black] table[header=false] {\n'+pairs+'\n};')
     template=template.replace('@@RAW_PLOTS@@','\n'.join(panels))
+    kinetic=json.loads((ROOT/'results/kinetic_experiment.json').read_text(encoding='utf8'))
+    records=json.loads((ROOT/'data/processed/wang_kinetics.json').read_text(encoding='utf8'))
+    time_rows=[];target_rows=[];kinetic_panels=[]
+    for group in kinetic['selected_observations']:
+        material=group['material']
+        time_rows.append(material+' & '+' & '.join(f"{r['q_mean_mg_g']:.2f} $\\pm$ {r['q_sd_mg_g']:.2f}" for r in group['observations'])+r' \\')
+        targets=[r for r in kinetic['target_windows'] if r['material']==material and r['sd_multiplier']==0]
+        cells=[]
+        for r in targets:
+            if r['status']=='at_first_sample': cells.append('First sample (0.5)')
+            elif r['status']=='not_sustained_by_last_sample':cells.append('Not by 72')
+            else:cells.append(f"{r['previous_sample_h']:g} $\\to$ {r['first_sustained_sample_h']:g}")
+        target_rows.append(material+' & '+' & '.join(cells)+r' \\')
+        points='\n'.join(f"{r['time_h']:g} {r['q_mean_mg_g']:g} {r['q_sd_mg_g']:g}" for r in records if r['material']==material)
+        kinetic_panels.append(r'\nextgroupplot[title={'+material+r'}]'+'\n'+
+            r'\addplot[gray,dashed] coordinates {(0.5,0) (72,0)};'+'\n'+
+            r'\addplot+[only marks,mark=*,mark size=1.8pt,blue!65!black,error bars/.cd,y dir=both,y explicit] table[x index=0,y index=1,y error index=2,header=false] {'+'\n'+points+'\n};')
+    template=template.replace('@@KINETIC_ROWS@@','\n'.join(time_rows)).replace('@@TARGET_ROWS@@','\n'.join(target_rows)).replace('@@KINETIC_PANELS@@','\n'.join(kinetic_panels))
     for key,val in {'ACTIVATION_ROWS':'\n'.join(table),'SENSITIVITY_ROWS':'\n'.join(sensitivity),'PLOT_DATA':plot,'PLOT_LABELS':labels,'INVENTORY_ROWS':'\n'.join(inventory)}.items():template=template.replace('@@'+key+'@@',val)
     if '@@' in template:raise ValueError('Unresolved manuscript placeholder')
     (ROOT/'paper/manuscript.tex').write_text(template,encoding='utf8',newline='\n')

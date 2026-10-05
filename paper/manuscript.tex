@@ -854,7 +854,7 @@ Sampling removals, storage changes and solid-phase P need accounting when interp
 Keeping fit diagnostics and missing-result labels alongside capacity estimates materially changes a biochar shortlist. In this published dataset, the primary screen retains 16 of 36 formulations and all nine 1~M formulations, while sensitivity analysis changes the highest-ranked recipe. GIGI reproduced the filtering, ranking and aggregation against independent checks. The result is a transparent starting point for targeted experiments. Demonstrating reduced runoff requires measurements of P loads, contact-time performance and subsequent release under the intended application conditions.
 
 \section*{Data and code availability}
-The accompanying repository, \url{https://github.com/nurdymuny/gigi-biochar}, contains an attributed source-table excerpt, the unchanged Dryad workbook and README, SHA-256 provenance records, both normalized datasets in JSON and CSV, deterministic analysis, automated tests, exact live GIGI receipts and this standalone LaTeX manuscript. Technical drawings and plotted data are embedded as vector LaTeX graphics. The engine is obtained separately from its upstream repository~\cite{gigi}; this analysis does not redistribute or relicense it. Published source data retain their original attribution and reuse terms.
+The accompanying repository, \url{https://github.com/nurdymuny/gigi-biochar}, contains an attributed source-table excerpt, unchanged source workbooks, SHA-256 provenance records, normalized data in JSON and CSV, deterministic analysis, automated tests, exact live GIGI receipts and this standalone LaTeX manuscript. The separate Wang dataset and contact-time analysis are documented in Appendix~\ref{app:kinetics}. Technical drawings and plotted data are embedded as vector LaTeX graphics. The engine is obtained separately from its upstream repository~\cite{gigi}; this analysis does not redistribute or relicense it. Published source data retain their original attribution and reuse terms.
 
 \section*{Preparation and authorship}
 Original text and figures: copyright \copyright~2026 Bee Rosa Davis, licensed under \href{https://creativecommons.org/licenses/by-nc/4.0/}{CC BY-NC 4.0}. Analysis code is licensed separately under PolyForm Noncommercial 1.0.0. Third-party source data retain their original terms.
@@ -865,6 +865,7 @@ This research note was prepared with AI assistance for scientific discussion. No
 \bibitem{padilla} Padilla JT, Watts DW, Novak JM, Cerven V, Ippolito JA, Szogi AA, Johnson MG. Magnesium activation affects the properties and phosphate sorption capacity of poultry litter biochar. \emph{Biochar}. 2023;5:64. \href{https://doi.org/10.1007/s42773-023-00263-5}{doi:10.1007/s42773-023-00263-5}. Table~1 and experimental methods.
 \bibitem{dryad} Padilla J, Watts DW, Novak JM, et al. Digital research data from: Magnesium activation affects the properties and phosphate sorption capacity of poultry litter biochar. Dryad; version 10 October 2023. \href{https://doi.org/10.5061/dryad.pc866t1w7}{doi:10.5061/dryad.pc866t1w7}. Isotherm worksheet analyzed descriptively; source files preserved unchanged.
 \bibitem{gigi} GIGI source repository. \url{https://github.com/nurdymuny/gigi}. Accessed 5 October 2026. Engine distributed separately under its stated license; live execution evidence is supplied with the analysis repository.
+\bibitem{wangdata} Wang P. Dataset of a comparative study on phosphate removal from water using Phragmites australis biochars loaded with different metal oxides. Dryad; version 22 April 2021. \href{https://doi.org/10.5061/dryad.3xsj3txf4}{doi:10.5061/dryad.3xsj3txf4}. Kinetic means and SD analyzed separately in Appendix~\ref{app:kinetics}.
 \end{thebibliography}
 
 \clearpage
@@ -918,4 +919,154 @@ Values below reproduce the source table after expansion to one formulation per r
 35 & PL7 & 1 & 700 & 2.84 $\pm$ 0.40 & 0.90 & Retained \\
 36 & PL7 & 1 & 900 & 5.41 $\pm$ 1.85 & 0.96 & Retained \\
 \end{longtable}
+\clearpage
+\normalsize
+\section{Follow-up computational experiment: contact time}\label{app:kinetics}
+This separate exploratory analysis uses Wang's archived reed-biochar kinetic data~\cite{wangdata}: six materials at 12 times from 0.5 to 72~h. It does not add observations to the poultry-litter study or describe a new laboratory experiment. The unchanged workbook supplies 72 means with standard deviations (SD), not individual replicates. Replicate count and covariance across time are not specified in the workbook. Original cell locations and signed values are preserved. The kinetic header reports mg/g under PO4-P; no phosphate-to-P mass conversion is applied. The accompanying isotherm sheet labels $Q_e$ as mg/L rather than mg/g and is excluded pending unit review.
+
+\subsection{Question and method}
+We asked how the ordering of reported mean uptake changes with contact time. We ranked materials independently at all 12 measured times and examined illustrative uptake targets of 5, 8 and 9~mg/g. These targets were chosen after inspecting the data; they are not preregistered hypotheses, regulatory limits or field-performance criteria. For each target we found the first sampled time whose mean, and every later sampled mean, met the target. We repeated this calculation for mean minus one and two SD, giving 54 material/target/scenario combinations. We also counted strictly separated mean $\pm k$SD bands for all 15 material pairs at each time, for $k=1,2$. These perturbations are descriptive sensitivity checks, not confidence bounds or hypothesis tests.
+
+GIGI retrieved and ranked the records; independent Python calculations verified all 12 ranked selections and three inclusive target selections. A synthetic control planted early low and high values and a much larger late value: the filtered ranking had to select the early high value, while removing the time filter had to select the late value. Python computed the sampled attainment and SD sensitivity. Exact requests and responses accompany the results. No new kinetic model was fitted, no interpolation was used, and 72~h was not assumed to represent equilibrium.
+
+\begin{center}\begin{minipage}{\textwidth}\centering\small
+\captionof{table}{Selected kinetic means $\pm$ source SD (mg/g). SD is not SE or a confidence interval. A source SD displayed as zero is retained as reported and does not establish absence of measurement uncertainty.}
+\begin{tabular}{@{}lrrrrr@{}}\toprule
+Material & 0.5 h & 2 h & 6 h & 24 h & 72 h\\\midrule
+Al-BC & 1.81 $\pm$ 0.30 & 2.86 $\pm$ 0.22 & 3.78 $\pm$ 0.20 & 6.55 $\pm$ 0.37 & 9.25 $\pm$ 0.01 \\
+Ca-BC & 6.83 $\pm$ 0.29 & 7.75 $\pm$ 0.12 & 9.56 $\pm$ 0.04 & 9.79 $\pm$ 0.06 & 9.83 $\pm$ 0.01 \\
+Fe-BC & 5.87 $\pm$ 0.45 & 6.49 $\pm$ 0.22 & 7.57 $\pm$ 0.31 & 8.82 $\pm$ 0.16 & 8.75 $\pm$ 0.02 \\
+La-BC & 9.82 $\pm$ 0.04 & 9.87 $\pm$ 0.02 & 9.91 $\pm$ 0.01 & 9.91 $\pm$ 0.01 & 9.91 $\pm$ 0.02 \\
+Mg-BC & 1.51 $\pm$ 0.02 & 7.38 $\pm$ 0.01 & 9.28 $\pm$ 0.00 & 9.86 $\pm$ 0.02 & 9.82 $\pm$ 0.01 \\
+BC & -0.33 $\pm$ 0.06 & -0.22 $\pm$ 0.18 & -0.37 $\pm$ 0.33 & -0.43 $\pm$ 0.09 & -0.77 $\pm$ 0.02 \\
+\bottomrule\end{tabular}
+\end{minipage}\end{center}
+
+\begin{center}\begin{minipage}{\textwidth}\centering\small
+\captionof{table}{Sampled attainment based on means (hours). An arrow joins the preceding sample and the first sample meeting the target with all later sampled means also meeting it. It does not bound a continuous-time crossing or establish retention between samples. Attainment at 72~h has no later observation to check persistence.}
+\begin{tabular}{@{}llll@{}}\toprule
+Material & 5 mg/g & 8 mg/g & 9 mg/g\\\midrule
+Al-BC & 8 $\to$ 12 & 24 $\to$ 48 & 48 $\to$ 72 \\
+Ca-BC & First sample (0.5) & 2 $\to$ 3 & 3 $\to$ 4 \\
+Fe-BC & First sample (0.5) & 6 $\to$ 8 & Not by 72 \\
+La-BC & First sample (0.5) & First sample (0.5) & First sample (0.5) \\
+Mg-BC & 1.5 $\to$ 2 & 2 $\to$ 3 & 4 $\to$ 6 \\
+BC & Not by 72 & Not by 72 & Not by 72 \\
+\bottomrule\end{tabular}
+\end{minipage}\end{center}
+
+\subsection{Interpretation}
+La-BC has the largest reported mean at every sampled time. Mg-BC moves from fifth at 30~min to second at 24~h, but Ca-BC is again higher at 48 and 72~h. Their close late means do not establish a reliable material winner: Ca-BC and Mg-BC bands overlap even at one SD at 24 and 72~h. The unmodified BC has negative means at 11 of 12 times. Negative uptake is preserved rather than set to zero. Thirty minutes is the earliest measured time, and there is no desorption phase. These data therefore motivate, but cannot replace, a controlled flow-and-flush experiment with realistic water chemistry, independent columns and full phosphorus-load accounting.
+
+\clearpage
+\begin{figure}[p]\centering
+\begin{tikzpicture}
+\begin{groupplot}[
+group style={group size=2 by 3,horizontal sep=1.3cm,vertical sep=1.8cm},
+width=0.44\textwidth,height=0.23\textheight,
+xmode=log,log basis x=10,xmin=0.4,xmax=90,ymin=-1.5,ymax=10.5,
+xtick={0.5,2,6,24,72},xticklabels={0.5,2,6,24,72},
+ytick={0,5,10},xlabel={Time (h; log scale)},ylabel={Mean uptake (mg/g)},
+tick label style={font=\scriptsize},label style={font=\small},title style={font=\small},grid=major]
+\nextgroupplot[title={Al-BC}]
+\addplot[gray,dashed] coordinates {(0.5,0) (72,0)};
+\addplot+[only marks,mark=*,mark size=1.8pt,blue!65!black,error bars/.cd,y dir=both,y explicit] table[x index=0,y index=1,y error index=2,header=false] {
+0.5 1.81 0.3
+1 2.34 0.43
+1.5 2.52 0.36
+2 2.86 0.22
+3 2.88 0.14
+4 3.45 0.15
+6 3.78 0.2
+8 4.05 0.24
+12 5.23 0.47
+24 6.55 0.37
+48 8.34 0.48
+72 9.25 0.01
+};
+\nextgroupplot[title={Ca-BC}]
+\addplot[gray,dashed] coordinates {(0.5,0) (72,0)};
+\addplot+[only marks,mark=*,mark size=1.8pt,blue!65!black,error bars/.cd,y dir=both,y explicit] table[x index=0,y index=1,y error index=2,header=false] {
+0.5 6.83 0.29
+1 7.1 0.08
+1.5 7.23 0.15
+2 7.75 0.12
+3 8.84 0.21
+4 9.31 0.04
+6 9.56 0.04
+8 9.62 0.06
+12 9.76 0.05
+24 9.79 0.06
+48 9.82 0.01
+72 9.83 0.01
+};
+\nextgroupplot[title={Fe-BC}]
+\addplot[gray,dashed] coordinates {(0.5,0) (72,0)};
+\addplot+[only marks,mark=*,mark size=1.8pt,blue!65!black,error bars/.cd,y dir=both,y explicit] table[x index=0,y index=1,y error index=2,header=false] {
+0.5 5.87 0.45
+1 6.09 0.32
+1.5 6.33 0.16
+2 6.49 0.22
+3 6.96 0.37
+4 7.18 0.3
+6 7.57 0.31
+8 8.06 0.06
+12 8.5 0.07
+24 8.82 0.16
+48 8.75 0.19
+72 8.75 0.02
+};
+\nextgroupplot[title={La-BC}]
+\addplot[gray,dashed] coordinates {(0.5,0) (72,0)};
+\addplot+[only marks,mark=*,mark size=1.8pt,blue!65!black,error bars/.cd,y dir=both,y explicit] table[x index=0,y index=1,y error index=2,header=false] {
+0.5 9.82 0.04
+1 9.87 0.02
+1.5 9.88 0.03
+2 9.87 0.02
+3 9.87 0.02
+4 9.88 0.02
+6 9.91 0.01
+8 9.89 0.02
+12 9.88 0.04
+24 9.91 0.01
+48 9.9 0.01
+72 9.91 0.02
+};
+\nextgroupplot[title={Mg-BC}]
+\addplot[gray,dashed] coordinates {(0.5,0) (72,0)};
+\addplot+[only marks,mark=*,mark size=1.8pt,blue!65!black,error bars/.cd,y dir=both,y explicit] table[x index=0,y index=1,y error index=2,header=false] {
+0.5 1.51 0.02
+1 1.98 0.04
+1.5 2.63 0.03
+2 7.38 0.01
+3 8.53 0.03
+4 8.93 0.04
+6 9.28 0
+8 9.54 0.03
+12 9.56 0.02
+24 9.86 0.02
+48 9.73 0.01
+72 9.82 0.01
+};
+\nextgroupplot[title={BC}]
+\addplot[gray,dashed] coordinates {(0.5,0) (72,0)};
+\addplot+[only marks,mark=*,mark size=1.8pt,blue!65!black,error bars/.cd,y dir=both,y explicit] table[x index=0,y index=1,y error index=2,header=false] {
+0.5 -0.33 0.06
+1 -0.15 0.09
+1.5 0.01 0.55
+2 -0.22 0.18
+3 -0.34 0.28
+4 -0.27 0.25
+6 -0.37 0.33
+8 -0.21 0.32
+12 -0.46 0.14
+24 -0.43 0.09
+48 -0.65 0.08
+72 -0.77 0.02
+};
+\end{groupplot}
+\end{tikzpicture}
+\caption{All 72 kinetic means and reported $\pm$SD, with common axes and an explicit zero reference. Error bars smaller than the marker may be difficult to see. No connecting curve is fitted or interpolated. Data are from the separate Wang study~\cite{wangdata}; the chart does not measure field performance or subsequent phosphorus release.}
+\label{fig:kinetics}
+\end{figure}
 \end{document}

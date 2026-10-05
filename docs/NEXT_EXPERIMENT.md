@@ -4,6 +4,8 @@ The current analysis supports a shortlist of materials for testing. The next dec
 
 This document is a proposed research plan, not a performed experiment or an engineered treatment specification. The existing paper's column drawing shows the sampling arrangement. Resolve the target water chemistry, laboratory resources, and experimental unit with the collaborating laboratory before fixing the protocol.
 
+The first **computational** follow-up has now been run: [contact-time experiment](KINETIC_EXPERIMENT.md), with verified GIGI rankings, sampled target attainment and SD sensitivity. The paper includes its results in Appendix B. The physical column experiment below still requires new laboratory measurements.
+
 ## What data we already have
 
 The frozen [Padilla workbook](../data/source/dryad/Compiled_Data.xlsx) contains the 540 isotherm observations used in the paper and additional sheets that have not been normalized into the analysis.

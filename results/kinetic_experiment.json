@@ -1,0 +1,1318 @@
+{
+  "kind": "Exploratory descriptive computational experiment; no new laboratory experiment",
+  "input_sha256": "519f8eee03227a427357b018d7c1d6facfe1f9ad14f4009830f755bb9beb1aa5",
+  "source_records": 72,
+  "rankings": [
+    {
+      "time_h": 0.5,
+      "ordered_materials": [
+        "La-BC",
+        "Ca-BC",
+        "Fe-BC",
+        "Al-BC",
+        "Mg-BC",
+        "BC"
+      ],
+      "ordered_ids": [
+        37,
+        13,
+        25,
+        1,
+        49,
+        61
+      ],
+      "distinct_means": 6,
+      "band_separation": [
+        {
+          "sd_multiplier": 1.0,
+          "separated_pairs": 14,
+          "total_pairs": 15
+        },
+        {
+          "sd_multiplier": 2.0,
+          "separated_pairs": 13,
+          "total_pairs": 15
+        }
+      ]
+    },
+    {
+      "time_h": 1,
+      "ordered_materials": [
+        "La-BC",
+        "Ca-BC",
+        "Fe-BC",
+        "Al-BC",
+        "Mg-BC",
+        "BC"
+      ],
+      "ordered_ids": [
+        38,
+        14,
+        26,
+        2,
+        50,
+        62
+      ],
+      "distinct_means": 6,
+      "band_separation": [
+        {
+          "sd_multiplier": 1.0,
+          "separated_pairs": 14,
+          "total_pairs": 15
+        },
+        {
+          "sd_multiplier": 2.0,
+          "separated_pairs": 14,
+          "total_pairs": 15
+        }
+      ]
+    },
+    {
+      "time_h": 1.5,
+      "ordered_materials": [
+        "La-BC",
+        "Ca-BC",
+        "Fe-BC",
+        "Mg-BC",
+        "Al-BC",
+        "BC"
+      ],
+      "ordered_ids": [
+        39,
+        15,
+        27,
+        51,
+        3,
+        63
+      ],
+      "distinct_means": 6,
+      "band_separation": [
+        {
+          "sd_multiplier": 1.0,
+          "separated_pairs": 14,
+          "total_pairs": 15
+        },
+        {
+          "sd_multiplier": 2.0,
+          "separated_pairs": 14,
+          "total_pairs": 15
+        }
+      ]
+    },
+    {
+      "time_h": 2,
+      "ordered_materials": [
+        "La-BC",
+        "Ca-BC",
+        "Mg-BC",
+        "Fe-BC",
+        "Al-BC",
+        "BC"
+      ],
+      "ordered_ids": [
+        40,
+        16,
+        52,
+        28,
+        4,
+        64
+      ],
+      "distinct_means": 6,
+      "band_separation": [
+        {
+          "sd_multiplier": 1.0,
+          "separated_pairs": 15,
+          "total_pairs": 15
+        },
+        {
+          "sd_multiplier": 2.0,
+          "separated_pairs": 15,
+          "total_pairs": 15
+        }
+      ]
+    },
+    {
+      "time_h": 3,
+      "ordered_materials": [
+        "La-BC",
+        "Ca-BC",
+        "Mg-BC",
+        "Fe-BC",
+        "Al-BC",
+        "BC"
+      ],
+      "ordered_ids": [
+        41,
+        17,
+        53,
+        29,
+        5,
+        65
+      ],
+      "distinct_means": 6,
+      "band_separation": [
+        {
+          "sd_multiplier": 1.0,
+          "separated_pairs": 15,
+          "total_pairs": 15
+        },
+        {
+          "sd_multiplier": 2.0,
+          "separated_pairs": 14,
+          "total_pairs": 15
+        }
+      ]
+    },
+    {
+      "time_h": 4,
+      "ordered_materials": [
+        "La-BC",
+        "Ca-BC",
+        "Mg-BC",
+        "Fe-BC",
+        "Al-BC",
+        "BC"
+      ],
+      "ordered_ids": [
+        42,
+        18,
+        54,
+        30,
+        6,
+        66
+      ],
+      "distinct_means": 6,
+      "band_separation": [
+        {
+          "sd_multiplier": 1.0,
+          "separated_pairs": 15,
+          "total_pairs": 15
+        },
+        {
+          "sd_multiplier": 2.0,
+          "separated_pairs": 15,
+          "total_pairs": 15
+        }
+      ]
+    },
+    {
+      "time_h": 6,
+      "ordered_materials": [
+        "La-BC",
+        "Ca-BC",
+        "Mg-BC",
+        "Fe-BC",
+        "Al-BC",
+        "BC"
+      ],
+      "ordered_ids": [
+        43,
+        19,
+        55,
+        31,
+        7,
+        67
+      ],
+      "distinct_means": 6,
+      "band_separation": [
+        {
+          "sd_multiplier": 1.0,
+          "separated_pairs": 15,
+          "total_pairs": 15
+        },
+        {
+          "sd_multiplier": 2.0,
+          "separated_pairs": 15,
+          "total_pairs": 15
+        }
+      ]
+    },
+    {
+      "time_h": 8,
+      "ordered_materials": [
+        "La-BC",
+        "Ca-BC",
+        "Mg-BC",
+        "Fe-BC",
+        "Al-BC",
+        "BC"
+      ],
+      "ordered_ids": [
+        44,
+        20,
+        56,
+        32,
+        8,
+        68
+      ],
+      "distinct_means": 6,
+      "band_separation": [
+        {
+          "sd_multiplier": 1.0,
+          "separated_pairs": 14,
+          "total_pairs": 15
+        },
+        {
+          "sd_multiplier": 2.0,
+          "separated_pairs": 14,
+          "total_pairs": 15
+        }
+      ]
+    },
+    {
+      "time_h": 12,
+      "ordered_materials": [
+        "La-BC",
+        "Ca-BC",
+        "Mg-BC",
+        "Fe-BC",
+        "Al-BC",
+        "BC"
+      ],
+      "ordered_ids": [
+        45,
+        21,
+        57,
+        33,
+        9,
+        69
+      ],
+      "distinct_means": 6,
+      "band_separation": [
+        {
+          "sd_multiplier": 1.0,
+          "separated_pairs": 15,
+          "total_pairs": 15
+        },
+        {
+          "sd_multiplier": 2.0,
+          "separated_pairs": 14,
+          "total_pairs": 15
+        }
+      ]
+    },
+    {
+      "time_h": 24,
+      "ordered_materials": [
+        "La-BC",
+        "Mg-BC",
+        "Ca-BC",
+        "Fe-BC",
+        "Al-BC",
+        "BC"
+      ],
+      "ordered_ids": [
+        46,
+        58,
+        22,
+        34,
+        10,
+        70
+      ],
+      "distinct_means": 6,
+      "band_separation": [
+        {
+          "sd_multiplier": 1.0,
+          "separated_pairs": 14,
+          "total_pairs": 15
+        },
+        {
+          "sd_multiplier": 2.0,
+          "separated_pairs": 12,
+          "total_pairs": 15
+        }
+      ]
+    },
+    {
+      "time_h": 48,
+      "ordered_materials": [
+        "La-BC",
+        "Ca-BC",
+        "Mg-BC",
+        "Fe-BC",
+        "Al-BC",
+        "BC"
+      ],
+      "ordered_ids": [
+        47,
+        23,
+        59,
+        35,
+        11,
+        71
+      ],
+      "distinct_means": 6,
+      "band_separation": [
+        {
+          "sd_multiplier": 1.0,
+          "separated_pairs": 14,
+          "total_pairs": 15
+        },
+        {
+          "sd_multiplier": 2.0,
+          "separated_pairs": 14,
+          "total_pairs": 15
+        }
+      ]
+    },
+    {
+      "time_h": 72,
+      "ordered_materials": [
+        "La-BC",
+        "Ca-BC",
+        "Mg-BC",
+        "Al-BC",
+        "Fe-BC",
+        "BC"
+      ],
+      "ordered_ids": [
+        48,
+        24,
+        60,
+        12,
+        36,
+        72
+      ],
+      "distinct_means": 6,
+      "band_separation": [
+        {
+          "sd_multiplier": 1.0,
+          "separated_pairs": 14,
+          "total_pairs": 15
+        },
+        {
+          "sd_multiplier": 2.0,
+          "separated_pairs": 14,
+          "total_pairs": 15
+        }
+      ]
+    }
+  ],
+  "target_windows": [
+    {
+      "material": "Al-BC",
+      "target_mg_g": 5.0,
+      "sd_multiplier": 0.0,
+      "status": "observed",
+      "previous_sample_h": 8.0,
+      "first_sustained_sample_h": 12.0
+    },
+    {
+      "material": "Al-BC",
+      "target_mg_g": 5.0,
+      "sd_multiplier": 1.0,
+      "status": "observed",
+      "previous_sample_h": 12.0,
+      "first_sustained_sample_h": 24.0
+    },
+    {
+      "material": "Al-BC",
+      "target_mg_g": 5.0,
+      "sd_multiplier": 2.0,
+      "status": "observed",
+      "previous_sample_h": 12.0,
+      "first_sustained_sample_h": 24.0
+    },
+    {
+      "material": "Al-BC",
+      "target_mg_g": 8.0,
+      "sd_multiplier": 0.0,
+      "status": "observed",
+      "previous_sample_h": 24.0,
+      "first_sustained_sample_h": 48.0
+    },
+    {
+      "material": "Al-BC",
+      "target_mg_g": 8.0,
+      "sd_multiplier": 1.0,
+      "status": "observed",
+      "previous_sample_h": 48.0,
+      "first_sustained_sample_h": 72.0
+    },
+    {
+      "material": "Al-BC",
+      "target_mg_g": 8.0,
+      "sd_multiplier": 2.0,
+      "status": "observed",
+      "previous_sample_h": 48.0,
+      "first_sustained_sample_h": 72.0
+    },
+    {
+      "material": "Al-BC",
+      "target_mg_g": 9.0,
+      "sd_multiplier": 0.0,
+      "status": "observed",
+      "previous_sample_h": 48.0,
+      "first_sustained_sample_h": 72.0
+    },
+    {
+      "material": "Al-BC",
+      "target_mg_g": 9.0,
+      "sd_multiplier": 1.0,
+      "status": "observed",
+      "previous_sample_h": 48.0,
+      "first_sustained_sample_h": 72.0
+    },
+    {
+      "material": "Al-BC",
+      "target_mg_g": 9.0,
+      "sd_multiplier": 2.0,
+      "status": "observed",
+      "previous_sample_h": 48.0,
+      "first_sustained_sample_h": 72.0
+    },
+    {
+      "material": "Ca-BC",
+      "target_mg_g": 5.0,
+      "sd_multiplier": 0.0,
+      "status": "at_first_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": 0.5
+    },
+    {
+      "material": "Ca-BC",
+      "target_mg_g": 5.0,
+      "sd_multiplier": 1.0,
+      "status": "at_first_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": 0.5
+    },
+    {
+      "material": "Ca-BC",
+      "target_mg_g": 5.0,
+      "sd_multiplier": 2.0,
+      "status": "at_first_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": 0.5
+    },
+    {
+      "material": "Ca-BC",
+      "target_mg_g": 8.0,
+      "sd_multiplier": 0.0,
+      "status": "observed",
+      "previous_sample_h": 2.0,
+      "first_sustained_sample_h": 3.0
+    },
+    {
+      "material": "Ca-BC",
+      "target_mg_g": 8.0,
+      "sd_multiplier": 1.0,
+      "status": "observed",
+      "previous_sample_h": 2.0,
+      "first_sustained_sample_h": 3.0
+    },
+    {
+      "material": "Ca-BC",
+      "target_mg_g": 8.0,
+      "sd_multiplier": 2.0,
+      "status": "observed",
+      "previous_sample_h": 2.0,
+      "first_sustained_sample_h": 3.0
+    },
+    {
+      "material": "Ca-BC",
+      "target_mg_g": 9.0,
+      "sd_multiplier": 0.0,
+      "status": "observed",
+      "previous_sample_h": 3.0,
+      "first_sustained_sample_h": 4.0
+    },
+    {
+      "material": "Ca-BC",
+      "target_mg_g": 9.0,
+      "sd_multiplier": 1.0,
+      "status": "observed",
+      "previous_sample_h": 3.0,
+      "first_sustained_sample_h": 4.0
+    },
+    {
+      "material": "Ca-BC",
+      "target_mg_g": 9.0,
+      "sd_multiplier": 2.0,
+      "status": "observed",
+      "previous_sample_h": 3.0,
+      "first_sustained_sample_h": 4.0
+    },
+    {
+      "material": "Fe-BC",
+      "target_mg_g": 5.0,
+      "sd_multiplier": 0.0,
+      "status": "at_first_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": 0.5
+    },
+    {
+      "material": "Fe-BC",
+      "target_mg_g": 5.0,
+      "sd_multiplier": 1.0,
+      "status": "at_first_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": 0.5
+    },
+    {
+      "material": "Fe-BC",
+      "target_mg_g": 5.0,
+      "sd_multiplier": 2.0,
+      "status": "observed",
+      "previous_sample_h": 0.5,
+      "first_sustained_sample_h": 1.0
+    },
+    {
+      "material": "Fe-BC",
+      "target_mg_g": 8.0,
+      "sd_multiplier": 0.0,
+      "status": "observed",
+      "previous_sample_h": 6.0,
+      "first_sustained_sample_h": 8.0
+    },
+    {
+      "material": "Fe-BC",
+      "target_mg_g": 8.0,
+      "sd_multiplier": 1.0,
+      "status": "observed",
+      "previous_sample_h": 6.0,
+      "first_sustained_sample_h": 8.0
+    },
+    {
+      "material": "Fe-BC",
+      "target_mg_g": 8.0,
+      "sd_multiplier": 2.0,
+      "status": "observed",
+      "previous_sample_h": 8.0,
+      "first_sustained_sample_h": 12.0
+    },
+    {
+      "material": "Fe-BC",
+      "target_mg_g": 9.0,
+      "sd_multiplier": 0.0,
+      "status": "not_sustained_by_last_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": null
+    },
+    {
+      "material": "Fe-BC",
+      "target_mg_g": 9.0,
+      "sd_multiplier": 1.0,
+      "status": "not_sustained_by_last_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": null
+    },
+    {
+      "material": "Fe-BC",
+      "target_mg_g": 9.0,
+      "sd_multiplier": 2.0,
+      "status": "not_sustained_by_last_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": null
+    },
+    {
+      "material": "La-BC",
+      "target_mg_g": 5.0,
+      "sd_multiplier": 0.0,
+      "status": "at_first_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": 0.5
+    },
+    {
+      "material": "La-BC",
+      "target_mg_g": 5.0,
+      "sd_multiplier": 1.0,
+      "status": "at_first_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": 0.5
+    },
+    {
+      "material": "La-BC",
+      "target_mg_g": 5.0,
+      "sd_multiplier": 2.0,
+      "status": "at_first_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": 0.5
+    },
+    {
+      "material": "La-BC",
+      "target_mg_g": 8.0,
+      "sd_multiplier": 0.0,
+      "status": "at_first_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": 0.5
+    },
+    {
+      "material": "La-BC",
+      "target_mg_g": 8.0,
+      "sd_multiplier": 1.0,
+      "status": "at_first_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": 0.5
+    },
+    {
+      "material": "La-BC",
+      "target_mg_g": 8.0,
+      "sd_multiplier": 2.0,
+      "status": "at_first_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": 0.5
+    },
+    {
+      "material": "La-BC",
+      "target_mg_g": 9.0,
+      "sd_multiplier": 0.0,
+      "status": "at_first_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": 0.5
+    },
+    {
+      "material": "La-BC",
+      "target_mg_g": 9.0,
+      "sd_multiplier": 1.0,
+      "status": "at_first_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": 0.5
+    },
+    {
+      "material": "La-BC",
+      "target_mg_g": 9.0,
+      "sd_multiplier": 2.0,
+      "status": "at_first_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": 0.5
+    },
+    {
+      "material": "Mg-BC",
+      "target_mg_g": 5.0,
+      "sd_multiplier": 0.0,
+      "status": "observed",
+      "previous_sample_h": 1.5,
+      "first_sustained_sample_h": 2.0
+    },
+    {
+      "material": "Mg-BC",
+      "target_mg_g": 5.0,
+      "sd_multiplier": 1.0,
+      "status": "observed",
+      "previous_sample_h": 1.5,
+      "first_sustained_sample_h": 2.0
+    },
+    {
+      "material": "Mg-BC",
+      "target_mg_g": 5.0,
+      "sd_multiplier": 2.0,
+      "status": "observed",
+      "previous_sample_h": 1.5,
+      "first_sustained_sample_h": 2.0
+    },
+    {
+      "material": "Mg-BC",
+      "target_mg_g": 8.0,
+      "sd_multiplier": 0.0,
+      "status": "observed",
+      "previous_sample_h": 2.0,
+      "first_sustained_sample_h": 3.0
+    },
+    {
+      "material": "Mg-BC",
+      "target_mg_g": 8.0,
+      "sd_multiplier": 1.0,
+      "status": "observed",
+      "previous_sample_h": 2.0,
+      "first_sustained_sample_h": 3.0
+    },
+    {
+      "material": "Mg-BC",
+      "target_mg_g": 8.0,
+      "sd_multiplier": 2.0,
+      "status": "observed",
+      "previous_sample_h": 2.0,
+      "first_sustained_sample_h": 3.0
+    },
+    {
+      "material": "Mg-BC",
+      "target_mg_g": 9.0,
+      "sd_multiplier": 0.0,
+      "status": "observed",
+      "previous_sample_h": 4.0,
+      "first_sustained_sample_h": 6.0
+    },
+    {
+      "material": "Mg-BC",
+      "target_mg_g": 9.0,
+      "sd_multiplier": 1.0,
+      "status": "observed",
+      "previous_sample_h": 4.0,
+      "first_sustained_sample_h": 6.0
+    },
+    {
+      "material": "Mg-BC",
+      "target_mg_g": 9.0,
+      "sd_multiplier": 2.0,
+      "status": "observed",
+      "previous_sample_h": 4.0,
+      "first_sustained_sample_h": 6.0
+    },
+    {
+      "material": "BC",
+      "target_mg_g": 5.0,
+      "sd_multiplier": 0.0,
+      "status": "not_sustained_by_last_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": null
+    },
+    {
+      "material": "BC",
+      "target_mg_g": 5.0,
+      "sd_multiplier": 1.0,
+      "status": "not_sustained_by_last_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": null
+    },
+    {
+      "material": "BC",
+      "target_mg_g": 5.0,
+      "sd_multiplier": 2.0,
+      "status": "not_sustained_by_last_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": null
+    },
+    {
+      "material": "BC",
+      "target_mg_g": 8.0,
+      "sd_multiplier": 0.0,
+      "status": "not_sustained_by_last_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": null
+    },
+    {
+      "material": "BC",
+      "target_mg_g": 8.0,
+      "sd_multiplier": 1.0,
+      "status": "not_sustained_by_last_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": null
+    },
+    {
+      "material": "BC",
+      "target_mg_g": 8.0,
+      "sd_multiplier": 2.0,
+      "status": "not_sustained_by_last_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": null
+    },
+    {
+      "material": "BC",
+      "target_mg_g": 9.0,
+      "sd_multiplier": 0.0,
+      "status": "not_sustained_by_last_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": null
+    },
+    {
+      "material": "BC",
+      "target_mg_g": 9.0,
+      "sd_multiplier": 1.0,
+      "status": "not_sustained_by_last_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": null
+    },
+    {
+      "material": "BC",
+      "target_mg_g": 9.0,
+      "sd_multiplier": 2.0,
+      "status": "not_sustained_by_last_sample",
+      "previous_sample_h": null,
+      "first_sustained_sample_h": null
+    }
+  ],
+  "selected_observations": [
+    {
+      "material": "Al-BC",
+      "observations": [
+        {
+          "id": 1,
+          "study_id": "wang_2021",
+          "material": "Al-BC",
+          "time_h": 0.5,
+          "q_mean_mg_g": 1.81,
+          "q_sd_mg_g": 0.3,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A3",
+          "source_mean_cell": "B3",
+          "source_sd_cell": "C3"
+        },
+        {
+          "id": 4,
+          "study_id": "wang_2021",
+          "material": "Al-BC",
+          "time_h": 2.0,
+          "q_mean_mg_g": 2.86,
+          "q_sd_mg_g": 0.22,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A6",
+          "source_mean_cell": "B6",
+          "source_sd_cell": "C6"
+        },
+        {
+          "id": 7,
+          "study_id": "wang_2021",
+          "material": "Al-BC",
+          "time_h": 6.0,
+          "q_mean_mg_g": 3.78,
+          "q_sd_mg_g": 0.2,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A9",
+          "source_mean_cell": "B9",
+          "source_sd_cell": "C9"
+        },
+        {
+          "id": 10,
+          "study_id": "wang_2021",
+          "material": "Al-BC",
+          "time_h": 24.0,
+          "q_mean_mg_g": 6.55,
+          "q_sd_mg_g": 0.37,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A12",
+          "source_mean_cell": "B12",
+          "source_sd_cell": "C12"
+        },
+        {
+          "id": 12,
+          "study_id": "wang_2021",
+          "material": "Al-BC",
+          "time_h": 72.0,
+          "q_mean_mg_g": 9.25,
+          "q_sd_mg_g": 0.01,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A14",
+          "source_mean_cell": "B14",
+          "source_sd_cell": "C14"
+        }
+      ]
+    },
+    {
+      "material": "Ca-BC",
+      "observations": [
+        {
+          "id": 13,
+          "study_id": "wang_2021",
+          "material": "Ca-BC",
+          "time_h": 0.5,
+          "q_mean_mg_g": 6.83,
+          "q_sd_mg_g": 0.29,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A3",
+          "source_mean_cell": "D3",
+          "source_sd_cell": "E3"
+        },
+        {
+          "id": 16,
+          "study_id": "wang_2021",
+          "material": "Ca-BC",
+          "time_h": 2.0,
+          "q_mean_mg_g": 7.75,
+          "q_sd_mg_g": 0.12,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A6",
+          "source_mean_cell": "D6",
+          "source_sd_cell": "E6"
+        },
+        {
+          "id": 19,
+          "study_id": "wang_2021",
+          "material": "Ca-BC",
+          "time_h": 6.0,
+          "q_mean_mg_g": 9.56,
+          "q_sd_mg_g": 0.04,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A9",
+          "source_mean_cell": "D9",
+          "source_sd_cell": "E9"
+        },
+        {
+          "id": 22,
+          "study_id": "wang_2021",
+          "material": "Ca-BC",
+          "time_h": 24.0,
+          "q_mean_mg_g": 9.79,
+          "q_sd_mg_g": 0.06,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A12",
+          "source_mean_cell": "D12",
+          "source_sd_cell": "E12"
+        },
+        {
+          "id": 24,
+          "study_id": "wang_2021",
+          "material": "Ca-BC",
+          "time_h": 72.0,
+          "q_mean_mg_g": 9.83,
+          "q_sd_mg_g": 0.01,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A14",
+          "source_mean_cell": "D14",
+          "source_sd_cell": "E14"
+        }
+      ]
+    },
+    {
+      "material": "Fe-BC",
+      "observations": [
+        {
+          "id": 25,
+          "study_id": "wang_2021",
+          "material": "Fe-BC",
+          "time_h": 0.5,
+          "q_mean_mg_g": 5.87,
+          "q_sd_mg_g": 0.45,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A3",
+          "source_mean_cell": "F3",
+          "source_sd_cell": "G3"
+        },
+        {
+          "id": 28,
+          "study_id": "wang_2021",
+          "material": "Fe-BC",
+          "time_h": 2.0,
+          "q_mean_mg_g": 6.49,
+          "q_sd_mg_g": 0.22,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A6",
+          "source_mean_cell": "F6",
+          "source_sd_cell": "G6"
+        },
+        {
+          "id": 31,
+          "study_id": "wang_2021",
+          "material": "Fe-BC",
+          "time_h": 6.0,
+          "q_mean_mg_g": 7.57,
+          "q_sd_mg_g": 0.31,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A9",
+          "source_mean_cell": "F9",
+          "source_sd_cell": "G9"
+        },
+        {
+          "id": 34,
+          "study_id": "wang_2021",
+          "material": "Fe-BC",
+          "time_h": 24.0,
+          "q_mean_mg_g": 8.82,
+          "q_sd_mg_g": 0.16,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A12",
+          "source_mean_cell": "F12",
+          "source_sd_cell": "G12"
+        },
+        {
+          "id": 36,
+          "study_id": "wang_2021",
+          "material": "Fe-BC",
+          "time_h": 72.0,
+          "q_mean_mg_g": 8.75,
+          "q_sd_mg_g": 0.02,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A14",
+          "source_mean_cell": "F14",
+          "source_sd_cell": "G14"
+        }
+      ]
+    },
+    {
+      "material": "La-BC",
+      "observations": [
+        {
+          "id": 37,
+          "study_id": "wang_2021",
+          "material": "La-BC",
+          "time_h": 0.5,
+          "q_mean_mg_g": 9.82,
+          "q_sd_mg_g": 0.04,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A3",
+          "source_mean_cell": "H3",
+          "source_sd_cell": "I3"
+        },
+        {
+          "id": 40,
+          "study_id": "wang_2021",
+          "material": "La-BC",
+          "time_h": 2.0,
+          "q_mean_mg_g": 9.87,
+          "q_sd_mg_g": 0.02,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A6",
+          "source_mean_cell": "H6",
+          "source_sd_cell": "I6"
+        },
+        {
+          "id": 43,
+          "study_id": "wang_2021",
+          "material": "La-BC",
+          "time_h": 6.0,
+          "q_mean_mg_g": 9.91,
+          "q_sd_mg_g": 0.01,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A9",
+          "source_mean_cell": "H9",
+          "source_sd_cell": "I9"
+        },
+        {
+          "id": 46,
+          "study_id": "wang_2021",
+          "material": "La-BC",
+          "time_h": 24.0,
+          "q_mean_mg_g": 9.91,
+          "q_sd_mg_g": 0.01,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A12",
+          "source_mean_cell": "H12",
+          "source_sd_cell": "I12"
+        },
+        {
+          "id": 48,
+          "study_id": "wang_2021",
+          "material": "La-BC",
+          "time_h": 72.0,
+          "q_mean_mg_g": 9.91,
+          "q_sd_mg_g": 0.02,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A14",
+          "source_mean_cell": "H14",
+          "source_sd_cell": "I14"
+        }
+      ]
+    },
+    {
+      "material": "Mg-BC",
+      "observations": [
+        {
+          "id": 49,
+          "study_id": "wang_2021",
+          "material": "Mg-BC",
+          "time_h": 0.5,
+          "q_mean_mg_g": 1.51,
+          "q_sd_mg_g": 0.02,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A3",
+          "source_mean_cell": "J3",
+          "source_sd_cell": "K3"
+        },
+        {
+          "id": 52,
+          "study_id": "wang_2021",
+          "material": "Mg-BC",
+          "time_h": 2.0,
+          "q_mean_mg_g": 7.38,
+          "q_sd_mg_g": 0.01,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A6",
+          "source_mean_cell": "J6",
+          "source_sd_cell": "K6"
+        },
+        {
+          "id": 55,
+          "study_id": "wang_2021",
+          "material": "Mg-BC",
+          "time_h": 6.0,
+          "q_mean_mg_g": 9.28,
+          "q_sd_mg_g": 0.0,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A9",
+          "source_mean_cell": "J9",
+          "source_sd_cell": "K9"
+        },
+        {
+          "id": 58,
+          "study_id": "wang_2021",
+          "material": "Mg-BC",
+          "time_h": 24.0,
+          "q_mean_mg_g": 9.86,
+          "q_sd_mg_g": 0.02,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A12",
+          "source_mean_cell": "J12",
+          "source_sd_cell": "K12"
+        },
+        {
+          "id": 60,
+          "study_id": "wang_2021",
+          "material": "Mg-BC",
+          "time_h": 72.0,
+          "q_mean_mg_g": 9.82,
+          "q_sd_mg_g": 0.01,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A14",
+          "source_mean_cell": "J14",
+          "source_sd_cell": "K14"
+        }
+      ]
+    },
+    {
+      "material": "BC",
+      "observations": [
+        {
+          "id": 61,
+          "study_id": "wang_2021",
+          "material": "BC",
+          "time_h": 0.5,
+          "q_mean_mg_g": -0.33,
+          "q_sd_mg_g": 0.06,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A3",
+          "source_mean_cell": "L3",
+          "source_sd_cell": "M3"
+        },
+        {
+          "id": 64,
+          "study_id": "wang_2021",
+          "material": "BC",
+          "time_h": 2.0,
+          "q_mean_mg_g": -0.22,
+          "q_sd_mg_g": 0.18,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A6",
+          "source_mean_cell": "L6",
+          "source_sd_cell": "M6"
+        },
+        {
+          "id": 67,
+          "study_id": "wang_2021",
+          "material": "BC",
+          "time_h": 6.0,
+          "q_mean_mg_g": -0.37,
+          "q_sd_mg_g": 0.33,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A9",
+          "source_mean_cell": "L9",
+          "source_sd_cell": "M9"
+        },
+        {
+          "id": 70,
+          "study_id": "wang_2021",
+          "material": "BC",
+          "time_h": 24.0,
+          "q_mean_mg_g": -0.43,
+          "q_sd_mg_g": 0.09,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A12",
+          "source_mean_cell": "L12",
+          "source_sd_cell": "M12"
+        },
+        {
+          "id": 72,
+          "study_id": "wang_2021",
+          "material": "BC",
+          "time_h": 72.0,
+          "q_mean_mg_g": -0.77,
+          "q_sd_mg_g": 0.02,
+          "replicate_n": null,
+          "uncertainty_type": "source standard deviation",
+          "observation_type": "summary mean",
+          "source_sheet": "PO4-P adsorption kinetics",
+          "source_time_cell": "A14",
+          "source_mean_cell": "L14",
+          "source_sd_cell": "M14"
+        }
+      ]
+    }
+  ],
+  "methods": [
+    "Rank reported means independently at each measured time; ties are ordered by material label only.",
+    "Targets 5, 8 and 9 mg/g were chosen after inspecting the dataset, as illustrative absolute-uptake sensitivity levels, not regulatory or field requirements.",
+    "First sustained sampled attainment means the point and all later sampled points meet the threshold. No behavior between samples or beyond 72 hours is inferred.",
+    "Attainment at the final sample has no later observation to check persistence. Reported zero SD is not proof of no measurement uncertainty.",
+    "Repeat attainment with mean minus 1 or 2 source SD. Compare all 15 material pairs using strict separation of mean +/- k*SD bands at each time.",
+    "SD perturbations are descriptive sensitivity scenarios, not confidence bounds, p-values, predictive guarantees, or evidence of independent batches.",
+    "No percentage of equilibrium is calculated; 72 hours is not assumed to be equilibrium.",
+    "Unmodified BC is retained with signed means. No division by negative uptake or clipping to zero.",
+    "Study-specific batch uptake cannot establish flow-through retention, dilution performance or later flushing losses."
+  ]
+}

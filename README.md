@@ -6,7 +6,7 @@ A reproducible secondary analysis of **36 published biochar formulations and 540
 
 This project analyzes Padilla et al. (2023) and its public Dryad workbook. It does not report new experiments, demonstrate reduced field runoff, establish a statistically optimal material, or refit the original isotherm models. The paper proposes a next experiment for testing runoff applications.
 
-A separate follow-up extracts **72 kinetic means with standard deviations** from Wang's 2021 Dryad dataset. See the [next-experiment plan](docs/NEXT_EXPERIMENT.md), [CSV](data/processed/wang_kinetics.csv), [summary](results/wang_summary.json), and [live GIGI receipts](results/wang_live_verification.json). These are not individual replicates and are not pooled into the Padilla paper.
+A separate follow-up analyzes **72 kinetic means with standard deviations** from Wang's 2021 Dryad dataset. The completed [contact-time computational experiment](docs/KINETIC_EXPERIMENT.md) compares all 12 time-specific rankings and 54 target/SD scenarios. It is included separately in Appendix B, with a six-panel vector figure; the studies are not pooled. See also the [physical experiment plan](docs/NEXT_EXPERIMENT.md), [source CSV](data/processed/wang_kinetics.csv), and [live experiment receipts](results/kinetic_experiment_live.json).
 
 ## Read the results
 
@@ -17,7 +17,7 @@ A separate follow-up extracts **72 kinetic means with standard deviations** from
 - [Live screening evidence](results/live_verification.json) and [live measurement evidence](results/isotherm_live_verification.json).
 - [Next experiment and public-data acquisition plan](docs/NEXT_EXPERIMENT.md), including the measurements needed to test capture and later release.
 
-The manuscript includes two original vector technical drawings: the fiber-bundle record organization and a proposed upflow-column experiment with sampling locations and phosphorus mass balance. Its other figures show reported capacity estimates with SE and all 540 signed sorption observations. All graphics are embedded as editable TikZ/PGFPlots code in the standalone source.
+The manuscript includes two original vector technical drawings: the fiber-bundle record organization and a proposed upflow-column experiment with sampling locations and phosphorus mass balance. Its other figures show reported capacity estimates with SE, all 540 signed sorption observations, and the separate 72 kinetic means with SD. All graphics are embedded as editable TikZ/PGFPlots code in the standalone source.
 
 ## What is a fiber bundle database? A sample-tray analogy
 
@@ -83,9 +83,10 @@ python scripts/extract_table.py
 python scripts/analyze.py
 python scripts/import_dryad.py
 python scripts/import_wang.py
+python scripts/kinetic_experiment.py
 python -m unittest discover -s tests -v
 python scripts/build_manuscript.py
-git diff --exit-code -- data/processed results/summary.json results/isotherm_summary.json results/wang_summary.json paper/manuscript.tex
+git diff --exit-code -- data/processed results/summary.json results/isotherm_summary.json results/wang_summary.json results/kinetic_experiment.json results/kinetic_target_windows.csv docs/KINETIC_EXPERIMENT.md paper/manuscript.tex
 ```
 
 Run each command successfully before continuing. In PowerShell, inspect `$LASTEXITCODE` if a command fails; separate commands do not automatically stop execution on a native-program error. In Unix shells, the last exit code is `$?`.
@@ -95,7 +96,7 @@ Expected results:
 1. Extraction reports 36 formulations and rewrites JSON and CSV from the archived table.
 2. Screening prints JSON with `formulations: 36`, `numeric_fits: 24`, `passing: 16`, `poor_fit: 8`, and `nr: 12`.
 3. Dryad extraction prints `observations: 540`, `formulations: 36`, `points_per_formulation: [15]`, and `negative_sorption: 171`.
-4. Wang extraction reports 72 summary records, six materials and 11 negative means; all **20 tests** pass.
+4. Wang extraction reports 72 summary records, six materials and 11 negative means. The contact-time experiment reports 12 rankings and 54 target/SD scenarios; all **25 tests** pass.
 5. Manuscript generation prints `Built standalone manuscript.tex`.
 6. The final Git command exits 0 with no diff. It checks deterministic text outputs, not PDF byte identity or live database execution.
 
@@ -177,6 +178,7 @@ Open terminal B at the analysis repository root:
 python scripts/analyze.py --gigi-url http://127.0.0.1:3147
 python scripts/import_dryad.py --gigi-url http://127.0.0.1:3147
 python scripts/import_wang.py --gigi-url http://127.0.0.1:3147
+python scripts/kinetic_experiment.py --gigi-url http://127.0.0.1:3147
 ```
 
 Use `127.0.0.1` locally: on Windows, `localhost` can resolve to IPv6 first and add delays. These operations need write permission and are not intended for GIGI's public read-only instance.
@@ -188,6 +190,7 @@ Use `127.0.0.1` locally: on Windows, `localhost` can resolve to IPv6 first and a
 | `biochar_isotherms_v1` | 540 | Archived solution-concentration/sorbed-P pairs |
 | `biochar_wang_kinetic_summaries_v1` | 72 | Separate-study kinetic means and SD; unknown replicate counts kept null |
 | `biochar_wang_time_gate_v1` | 2 | Explicitly synthetic time-filter controls |
+| `biochar_contact_rank_gate_v1` | 3 | Synthetic combined time-filter/ranking controls |
 
 Absent bundles are created. Matching existing records are reused. Mismatching records cause a failure; these scripts never overwrite or delete an existing differing bundle. For an incomplete bundle left by an interrupted import, restart with a fresh isolated data directory. Do not merge private lab records into these fixed reproduction bundles.
 
@@ -278,9 +281,9 @@ The table archiver extracts the first HTML table, so manually confirm it is stil
 
 ## Tests and continuous integration
 
-The **20 tests** check source-file hashes, all-cell extraction agreement, NR missingness, strict thresholds, known screening counts, sensitivity, the planted filter mechanism, rejection of incomplete/duplicate designs and excess roundtrip rows, all 540 workbook pairs, a known negative cell, preservation of label anomalies, all 72 Wang summaries with SD and null replicate counts, and the PDF source-binding guard. The latter accepts a matching fixture and rejects separately planted source, PDF, and embedded-digest changes.
+The **25 tests** check source-file hashes, all-cell extraction agreement, NR missingness, strict thresholds, known screening counts, sensitivity, the planted filter mechanism, rejection of incomplete/duplicate designs and excess roundtrip rows, all 540 workbook pairs, a known negative cell, preservation of label anomalies, all 72 Wang summaries with SD and null replicate counts, and the PDF source-binding guard. Five contact-time tests cover signed ranking, rejection of transient threshold attainment, first-sample versus absent attainment, SD sensitivity and touching uncertainty bands. The PDF guard accepts a matching fixture and rejects separately planted source, PDF, and embedded-digest changes.
 
-GitHub Actions is configured to run these under Python 3.12 on Ubuntu 24.04, regenerate both data layers, both summaries, and the manuscript, and fail on unexpected diffs. It then checks the committed PDF manifest, installs TeX Live, compiles a fresh PDF, compares its content with the committed export, and uploads the verified compilation as an artifact. It does not start GIGI. Live execution and visual PDF review remain separate checks. A workflow definition is not evidence that a hosted run succeeded; inspect the status of the exact commit. There are no random samples or random seeds in this descriptive analysis.
+GitHub Actions is configured to run these under Python 3.12 on Ubuntu 24.04, regenerate all data layers, summaries, the contact-time report and the manuscript, and fail on unexpected diffs. It then checks the committed PDF manifest, installs TeX Live, compiles a fresh PDF, compares its content with the committed export, and uploads the verified compilation as an artifact. It does not start GIGI. Live execution and visual PDF review remain separate checks. A workflow definition is not evidence that a hosted run succeeded; inspect the status of the exact commit. There are no random samples or random seeds in this descriptive analysis.
 
 ## Troubleshooting
 
@@ -315,6 +318,10 @@ GitHub Actions is configured to run these under Python 3.12 on Ubuntu 24.04, reg
 | `scripts/extract_table.py` | Table normalization |
 | `scripts/analyze.py` | Fit screening and optional live GIGI verification |
 | `scripts/import_dryad.py` | Workbook normalization and optional live verification |
+| `scripts/import_wang.py` | Separate kinetic mean/SD extraction and optional live verification |
+| `scripts/kinetic_experiment.py` | Time-specific ranking, sampled attainment and SD sensitivity |
+| `docs/KINETIC_EXPERIMENT.md` | Generated computational experiment report |
+| `results/kinetic_experiment*`, `results/kinetic_target_windows.csv` | Results, live receipts and all target/SD scenarios |
 | `scripts/build_manuscript.py` | Data + prose template -> standalone LaTeX |
 | `scripts/build_pdf.py`, `scripts/check_pdf.py` | Export, source binding, and independent PDF comparison |
 | `paper/pdf_build.json` | Hashes connecting the source, builder and published PDF |
